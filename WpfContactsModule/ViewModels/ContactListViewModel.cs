@@ -16,6 +16,7 @@ namespace WpfContactsModule.ViewModels
     {
         IContactStateAppService _moduleState;
         IContactRepositoryAppService _repository;
+
         public ContactListViewModel(IContactModule module,
             IContactViewSharedContext context,
             IContactStateAppService moduleState,
@@ -51,7 +52,6 @@ namespace WpfContactsModule.ViewModels
         {
             ContactsCollection.Remove(RegionContext.CurrentItem as ContactBindingEntity);
         }
-
 
         private bool OnDeleteCanExecute()
         {
