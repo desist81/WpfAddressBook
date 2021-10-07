@@ -52,6 +52,7 @@ namespace WpfContactsModule.ViewModels
             ContactsCollection.Remove(RegionContext.CurrentItem as ContactBindingEntity);
         }
 
+
         private bool OnDeleteCanExecute()
         {
             return this.RegionContext.CurrentItem != null;
