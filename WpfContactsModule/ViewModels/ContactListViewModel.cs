@@ -27,11 +27,16 @@ namespace WpfContactsModule.ViewModels
             _repository = repository;
             this.RegionContext = context;
             this.DeleteCommand = new DelegateCommand(OnDeleteExecute, OnDeleteCanExecute);
-
+            this.SaveCommand = new DelegateCommand(OnSaveExecute, OnSaveCanExecute);
+            this.RefreshCommand = new DelegateCommand(OnRefreshExecute);
+            ModuleCommands.SaveCommand.RegisterCommand(SaveCommand);
+            ModuleCommands.RefreshCommand.RegisterCommand(RefreshCommand);
         }
 
         #region Commands
         public DelegateCommand DeleteCommand { get; private set; }
+        public DelegateCommand SaveCommand { get; private set; }
+        public DelegateCommand RefreshCommand { get; private set; }
 
         #endregion Commands
 
@@ -44,14 +49,14 @@ namespace WpfContactsModule.ViewModels
 
             }
         }
-       
+
         #endregion Properties
 
-        #region Methods
+        #region Delete
         private void OnDeleteExecute()
         {
-            _repository?.DeleteContact(RegionContext.CurrentItem as ContactBindingEntity);            
-            RaisePropertyChanged(StaticReflection.GetMemberName<ContactListViewModel>(p=>p.ContactsCollection));
+            _repository?.DeleteContact(RegionContext.CurrentItem as ContactBindingEntity);
+            RaisePropertyChanged(StaticReflection.GetMemberName<ContactListViewModel>(p => p.ContactsCollection));
 
         }
 
@@ -59,6 +64,27 @@ namespace WpfContactsModule.ViewModels
         {
             return this.RegionContext.CurrentItem != null;
         }
-        #endregion Methods
+        #endregion Delete
+
+        #region Save
+        private void OnSaveExecute()
+        {
+            _repository?.SaveContact(RegionContext.CurrentItem as ContactBindingEntity);
+            RaisePropertyChanged(StaticReflection.GetMemberName<ContactListViewModel>(p => p.ContactsCollection));
+        }
+
+        private bool OnSaveCanExecute()
+        {
+            return this.RegionContext.CurrentItem != null;
+        }
+        #endregion Save
+
+        #region Refresh
+        private void OnRefreshExecute()
+        {
+            RaisePropertyChanged(StaticReflection.GetMemberName<ContactListViewModel>(p => p.ContactsCollection));
+        }
+
+        #endregion Refresh
     }
 }

@@ -12,5 +12,9 @@ namespace AppServiceInterfaces
     {
         ObservableCollection<ContactBindingEntity> GetContactsCollection();
         void DeleteContact(ContactBindingEntity contact);
+
+        void AddContact(ContactBindingEntity contact);
+
+        void SaveContact(ContactBindingEntity contact);
     }
 }

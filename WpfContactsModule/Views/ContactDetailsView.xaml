@@ -21,7 +21,8 @@
         <TextBlock Grid.Row="0" Grid.Column="0" 
                    Text="Full name:"></TextBlock>
         <TextBox Grid.Row="0" Grid.Column="1"
-                 Text="{Binding RegionContext.CurrentItem.FullName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                 Text="{Binding RegionContext.CurrentItem.FullName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
+                                ValidatesOnDataErrors=True, NotifyOnValidationError=True }"/>
         <TextBlock Grid.Row="1" Grid.Column="0" 
                    Text="Nickname:"></TextBlock>
         <TextBox Grid.Row="1" Grid.Column="1"

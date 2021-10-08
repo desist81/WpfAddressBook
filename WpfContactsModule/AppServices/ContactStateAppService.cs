@@ -12,7 +12,7 @@ namespace WpfContactsModule.AppServices
 {
     public class ContactStateAppService : IContactStateAppService
     {
-        public bool IsModuleModified { get; set; }
+        public bool IsEditMode { get; set; }
     }
     
 }

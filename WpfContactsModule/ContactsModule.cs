@@ -25,7 +25,7 @@ namespace WpfContactsModule
             containerRegistry.RegisterInstance<IContactModule>(this);
             containerRegistry.RegisterInstance<IContactViewSharedContext>(new ContactViewSharedContext(ModuleNames.ContactsModule));
             containerRegistry.Register<IContactRepositoryAppService, ContactRepositoryAppService>();
-            containerRegistry.RegisterInstance<IContactStateAppService>(new ContactStateAppService(), ModuleNames.ContactsModule);
+            containerRegistry.RegisterSingleton<IContactStateAppService,ContactStateAppService>();
         }
 
         public void OnInitialized(IContainerProvider containerProvider)

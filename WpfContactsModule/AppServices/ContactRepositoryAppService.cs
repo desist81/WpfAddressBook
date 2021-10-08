@@ -40,5 +40,20 @@ namespace WpfContactsModule.AppServices
             }
 
         }
+
+        public void AddContact(ContactBindingEntity contact)
+        {
+            //TODO: Add data to data provider
+            if (contacts != null)
+            {
+                contacts.Add(contact);
+            }
+        }
+
+        public void SaveContact(ContactBindingEntity contact)
+        {
+            //TODO: Save using data provider
+           
+        }
     }
 }

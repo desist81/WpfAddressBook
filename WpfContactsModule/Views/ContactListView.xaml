@@ -7,7 +7,7 @@
              xmlns:prism="http://prismlibrary.com/"
              mc:Ignorable="d">
     <Grid>
-        <ListView 
+        <ListView
             ItemsSource="{Binding ContactsCollection}"
             SelectedItem="{Binding RegionContext.CurrentItem, Mode=TwoWay}">
             <ListView.ContextMenu>
@@ -19,20 +19,17 @@
 
                 <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="Contacts Book">
 
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=FullName}" Header="Full Name" Width="100"/>
-
-                    <!--<GridViewColumn DisplayMemberBinding="{Binding Path=LastName}" Width="100">
-                        <GridViewColumnHeader>Last Name
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=FullName}" Width="100">
+                        <GridViewColumnHeader>Full name
                             <GridViewColumnHeader.ContextMenu>
-                                <ContextMenu MenuItem.Click="LastNameCM_Click" Name="LastNameCM">
+                                <ContextMenu Name="sortingFullName">
                                     <MenuItem Header="Ascending" />
                                     <MenuItem Header="Descending" />
                                 </ContextMenu>
                             </GridViewColumnHeader.ContextMenu>
                         </GridViewColumnHeader>
-                    </GridViewColumn>-->
-
-                    <!--<GridViewColumn DisplayMemberBinding="{Binding Path=EmployeeNumber}" Header="Employee No." Width="100"/>-->
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Nickname}" Header="Nickname" Width="100"/>
                 </GridView>
 
             </ListView.View>

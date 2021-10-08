@@ -37,7 +37,7 @@ namespace ClientInfrastructure.ViewModelsBase
             set
             {
                 _regionContext = value;
-                RaisePropertyChanged(StaticReflection.GetMemberName(() => RegionContext));
+                RaisePropertyChanged();
             }
         }
 

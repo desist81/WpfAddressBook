@@ -19,6 +19,16 @@
                 Value="True"/>
     </Style>
 
+    <Style TargetType="{x:Type ToolBarPanel}">
+        <Setter Property="FocusVisualStyle"
+                Value="{x:Null}"/>
+        <Setter Property="UseLayoutRounding"
+                Value="True"/>
+        <Setter Property="SnapsToDevicePixels"
+                Value="True"/>
+        <Setter Property="Margin"
+                Value="3"/>
+    </Style>
 
     <Style TargetType="{x:Type StackPanel}">
         <Setter Property="FocusVisualStyle"
@@ -84,6 +94,8 @@
                 Value="True"/>
         <Setter Property="SnapsToDevicePixels"
                 Value="True"/>
+        <Setter Property="Margin"
+                Value="3"/>
     </Style>
 
    <Style TargetType="{x:Type Button}">
@@ -101,9 +113,7 @@
         <Setter Property="UseLayoutRounding"
                 Value="True"/>
         <Setter Property="SnapsToDevicePixels"
-                Value="True"/>
-         <Setter Property="Padding"
-                 Value="2" />        
+                Value="True"/> 
     </Style>
 
     <Style TargetType="{x:Type ScrollBar}">

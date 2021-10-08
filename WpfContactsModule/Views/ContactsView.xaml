@@ -4,18 +4,29 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:prism="http://prismlibrary.com/"
-             xmlns:local="clr-namespace:WpfContactsModule.Views"
+             xmlns:local="clr-namespace:WpfContactsModule"
              xmlns:localConst="clr-namespace:WpfContactsModule.Constants"
              mc:Ignorable="d">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="5*"></ColumnDefinition>
-            <ColumnDefinition Width="5*"></ColumnDefinition>
-            
-        </Grid.ColumnDefinitions>
-        <ContentControl Grid.Column="0" prism:RegionManager.RegionName="{x:Static localConst:ContactsRegionNames.ContactListRegion}"/>
-        <ContentControl Grid.Column="1" prism:RegionManager.RegionName="{x:Static localConst:ContactsRegionNames.ContactDetailsRegion}"/>
+    <StackPanel Orientation="Vertical">
+        <ToolBarPanel>
+            <ToolBar>
+                <Button Content="Add" Command="{Binding AddCommand}"></Button>
+                <Button Content="Refresh" Command="{x:Static local:ModuleCommands.RefreshCommand}"></Button>
+            </ToolBar>
+        </ToolBarPanel>
+        <ContentControl prism:RegionManager.RegionName="{x:Static localConst:ContactsRegionNames.ContactListRegion}"/>
+        <Popup IsOpen="{Binding InInEditMode}" 
+           PopupAnimation="Slide"  
+           HorizontalOffset="150"  
+           VerticalOffset="100">
+            <StackPanel Orientation="Vertical">
+                <ContentControl prism:RegionManager.RegionName="{x:Static localConst:ContactsRegionNames.ContactDetailsRegion}"/>
+                <Button Content="Save" Command="{x:Static local:ModuleCommands.SaveCommand}"/>
+            </StackPanel>
+        </Popup>
+    </StackPanel>
 
-    </Grid>
+
+
 
 </UserControl>

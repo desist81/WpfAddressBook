@@ -81,6 +81,7 @@
     <Compile Include="ContactViewSharedContext.cs" />
     <Compile Include="IContactModule.cs" />
     <Compile Include="IContactViewSharedContext.cs" />
+    <Compile Include="ModuleCommands.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -95,6 +96,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ViewModels\ContactDetailsViewModel.cs" />
+    <Compile Include="ViewModels\ContactsViewModel.cs" />
     <Compile Include="ViewModels\ContactListViewModel.cs" />
     <Compile Include="Views\ContactDetailsView.xaml.cs">
       <DependentUpon>ContactDetailsView.xaml</DependentUpon>

@@ -64,7 +64,7 @@ namespace ClientInfrastructure
                     _currentItem = value;
                     if (_currentItem != null)
                     {
-                        RaisePropertyChanged(StaticReflection.GetMemberName(() => CurrentItem));
+                        RaisePropertyChanged();
                     }
 
                 }               

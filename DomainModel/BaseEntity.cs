@@ -10,6 +10,7 @@ namespace DomainModel
     {
         public BaseEntity()
         {
+            
         }
 
         public virtual bool IsEmpty()

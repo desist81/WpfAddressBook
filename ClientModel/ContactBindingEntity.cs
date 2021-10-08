@@ -3,6 +3,7 @@ using DomainModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,6 +36,7 @@ namespace ClientModel
             }
         }
 
+        [Required(ErrorMessage = "This field is required")]
         public string FullName
         {
             get
@@ -111,8 +113,11 @@ namespace ClientModel
             }
             set
             {
-                _phoneNumbersCollection = value;
-                FirePropertyChanged(this.GetMemberName(p => p.PhoneNumbers), false);
+                if (_phoneNumbersCollection != value)
+                {
+                    _phoneNumbersCollection = value;
+                    FirePropertyChanged(this.GetMemberName(p => p.PhoneNumbers), false);
+                }
             }
         }
 
@@ -129,8 +134,11 @@ namespace ClientModel
             }
             set
             {
-                _emailsCollection = value;
-                FirePropertyChanged(this.GetMemberName(p => p.Emails), false);
+                if (_emailsCollection != value)
+                {
+                    _emailsCollection = value;
+                    FirePropertyChanged(this.GetMemberName(p => p.Emails), false);
+                }
             }
         }
     }
