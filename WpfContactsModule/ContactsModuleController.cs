@@ -14,14 +14,12 @@ namespace WpfContactsModule
 {
     public class ContactsModuleController : BaseRegionController
     {
-        IContainerProvider _container;
-        IRegionManager _regionManager;
+       
         public ContactsModuleController(IContainerProvider container,
                                  IRegionManager regionManager)
            : base(container, regionManager)
         {
-            _container = container;
-            _regionManager = regionManager;
+           
         }
 
         internal void LoadView()
