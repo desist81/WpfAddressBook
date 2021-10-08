@@ -4,6 +4,6 @@
              xmlns:prism="http://prismlibrary.com/"
              xmlns:local="clr-namespace:WpfAddressBook">
     <prism:PrismApplication.Resources>
-         
+        <ResourceDictionary Source="/WpfAddressBook;component/Theme/ResourceLibrary.xaml" />
     </prism:PrismApplication.Resources>
 </prism:PrismApplication>

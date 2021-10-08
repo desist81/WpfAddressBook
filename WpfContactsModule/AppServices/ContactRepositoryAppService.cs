@@ -12,18 +12,33 @@ namespace WpfContactsModule.AppServices
 {
     public class ContactRepositoryAppService : IContactRepositoryAppService
     {
+        static List<ContactBindingEntity> contacts;
         public ObservableCollection<ContactBindingEntity> GetContactsCollection()
         {
             //TODO: Reading from data provider
-            IEnumerable<ContactBindingEntity> contacts =
-                new List<Contact>() {
+            if (contacts == null)
+            {
+                contacts =
+                  new List<Contact>() {
                     new Contact{FullName = "Contact 1"},
                     new Contact{FullName = "Contact 2"},
                     new Contact{FullName = "Contact 3"}}
-                .Select(c => new ContactBindingEntity(c));
+                  .Select(c => new ContactBindingEntity(c))
+                  .ToList();
+            }
 
             var observableContacts = new ObservableCollection<ContactBindingEntity>(contacts);
             return observableContacts;
+        }
+
+        public void DeleteContact(ContactBindingEntity contact)
+        {
+            //TODO: Reading from data provider
+            if (contacts != null)
+            {
+               contacts.Remove(contact);
+            }
+
         }
     }
 }

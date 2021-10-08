@@ -2,6 +2,7 @@
 using DomainModel;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,13 +11,14 @@ namespace ClientModel
 {
     public class ContactBindingEntity : NotifyBindingEntityProperyChanged<Contact>
     {
+        ObservableCollection<ContactPhoneBindingEntity> _phoneNumbersCollection;
+        ObservableCollection<ContactEmailBindingEntity> _emailsCollection;
 
         public ContactBindingEntity(Contact domainEntity) :
             base(domainEntity)
         {
         }
 
-        #region Primitive Properties
         public Guid Id
         {
             get
@@ -49,6 +51,87 @@ namespace ClientModel
             }
         }
 
-        #endregion Primitive Properties
+        public string Nickname
+        {
+            get
+            {
+                return DomainEntity.Nickname;
+            }
+            set
+            {
+                if (base.CheckPropertyChanged<string>(DomainEntity.Nickname, value))
+                {
+                    DomainEntity.Nickname = value;
+                    FirePropertyChanged(this.GetMemberName(p => p.Nickname));
+                }
+            }
+        }
+
+        public string Address
+        {
+            get
+            {
+                return DomainEntity.Address;
+            }
+            set
+            {
+                if (base.CheckPropertyChanged<string>(DomainEntity.Address, value))
+                {
+                    DomainEntity.Address = value;
+                    FirePropertyChanged(this.GetMemberName(p => p.Address));
+                }
+            }
+        }
+
+        public string Company
+        {
+            get
+            {
+                return DomainEntity.Company;
+            }
+            set
+            {
+                if (base.CheckPropertyChanged<string>(DomainEntity.Company, value))
+                {
+                    DomainEntity.Company = value;
+                    FirePropertyChanged(this.GetMemberName(p => p.Company));
+                }
+            }
+        }
+        public ObservableCollection<ContactPhoneBindingEntity> PhoneNumbers
+        {
+            get
+            {
+                if (_phoneNumbersCollection == null)
+                {
+                    _phoneNumbersCollection = new ObservableCollection<ContactPhoneBindingEntity>(
+                        DomainEntity.PhoneNumbers.Select(p => new ContactPhoneBindingEntity(p)));
+                }
+                return _phoneNumbersCollection;
+            }
+            set
+            {
+                _phoneNumbersCollection = value;
+                FirePropertyChanged(this.GetMemberName(p => p.PhoneNumbers), false);
+            }
+        }
+
+        public ObservableCollection<ContactEmailBindingEntity> Emails
+        {
+            get
+            {
+                if (_emailsCollection == null)
+                {
+                    _emailsCollection = new ObservableCollection<ContactEmailBindingEntity>(
+                        DomainEntity.Emails.Select(p => new ContactEmailBindingEntity(p)));
+                }
+                return _emailsCollection;
+            }
+            set
+            {
+                _emailsCollection = value;
+                FirePropertyChanged(this.GetMemberName(p => p.Emails), false);
+            }
+        }
     }
 }

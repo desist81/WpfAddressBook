@@ -11,5 +11,6 @@ namespace AppServiceInterfaces
     public interface IContactRepositoryAppService
     {
         ObservableCollection<ContactBindingEntity> GetContactsCollection();
+        void DeleteContact(ContactBindingEntity contact);
     }
 }

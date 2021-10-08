@@ -50,7 +50,9 @@ namespace WpfContactsModule.ViewModels
         #region Methods
         private void OnDeleteExecute()
         {
-            ContactsCollection.Remove(RegionContext.CurrentItem as ContactBindingEntity);
+            _repository?.DeleteContact(RegionContext.CurrentItem as ContactBindingEntity);            
+            RaisePropertyChanged(StaticReflection.GetMemberName<ContactListViewModel>(p=>p.ContactsCollection));
+
         }
 
         private bool OnDeleteCanExecute()

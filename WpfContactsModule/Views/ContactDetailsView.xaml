@@ -5,7 +5,34 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfContactsModule.Views"
              mc:Ignorable="d">
-    <Grid>
-        <TextBox Text="{Binding RegionContext.CurrentItem.FullName}"/>
+     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="8*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" 
+                   Text="Full name:"></TextBlock>
+        <TextBox Grid.Row="0" Grid.Column="1"
+                 Text="{Binding RegionContext.CurrentItem.FullName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBlock Grid.Row="1" Grid.Column="0" 
+                   Text="Nickname:"></TextBlock>
+        <TextBox Grid.Row="1" Grid.Column="1"
+                 Text="{Binding RegionContext.CurrentItem.Nickname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBlock Grid.Row="2" Grid.Column="0" 
+                   Text="Address:"></TextBlock>
+        <TextBox Grid.Row="2" Grid.Column="1"
+                 Text="{Binding RegionContext.CurrentItem.Address, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBlock Grid.Row="3" Grid.Column="0" 
+                   Text="Company:"></TextBlock>
+        <TextBox Grid.Row="3" Grid.Column="1"
+                 Text="{Binding RegionContext.CurrentItem.Company, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
     </Grid>
 </UserControl>
