@@ -9,7 +9,8 @@
     <Grid>
         <ListView
             ItemsSource="{Binding ContactsCollection}"
-            SelectedItem="{Binding RegionContext.CurrentItem, Mode=TwoWay}">
+            SelectedItem="{Binding RegionContext.CurrentItem, Mode=TwoWay}"
+            SelectedIndex="{Binding RegionContext.CurrentIndex, Mode=TwoWay}">
             <ListView.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Delete" Command="{Binding DeleteCommand}"/>

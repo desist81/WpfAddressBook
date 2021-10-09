@@ -1,4 +1,5 @@
 ﻿using AppServiceInterfaces;
+using ClientInfrastructure;
 using ClientModel;
 using DomainModel;
 using System;
@@ -36,12 +37,25 @@ namespace WpfContactsModule.AppServices
             //TODO: Reading from data provider
             if (contacts != null)
             {
-               contacts.Remove(contact);
+                contacts.Remove(contact);
+            }
+
+        }            
+
+        public void SaveContact(ContactBindingEntity contact)
+        {
+            if (contact.DataState == DataState.Added)
+            {
+                AddContact(contact);
+            }
+            else if (contact.DataState == DataState.Modified)
+            {
+                UpdateContact(contact);
             }
 
         }
 
-        public void AddContact(ContactBindingEntity contact)
+        private void AddContact(ContactBindingEntity contact)
         {
             //TODO: Add data to data provider
             if (contacts != null)
@@ -50,10 +64,10 @@ namespace WpfContactsModule.AppServices
             }
         }
 
-        public void SaveContact(ContactBindingEntity contact)
+        private void UpdateContact(ContactBindingEntity contact)
         {
-            //TODO: Save using data provider
-           
+            //TODO: Update data to data provider
+          
         }
     }
 }

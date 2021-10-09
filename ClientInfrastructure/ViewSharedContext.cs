@@ -16,7 +16,7 @@ namespace ClientInfrastructure
         private string _moduleName;
         private INotifyPropertyChanged _currentItem;
         bool _isModuleActive = false;
-      
+
 
         public ViewSharedContext(string moduleName)
         {
@@ -49,7 +49,7 @@ namespace ClientInfrastructure
                 }
             }
         }
-           
+
         public INotifyPropertyChanged CurrentItem
         {
             get
@@ -58,21 +58,15 @@ namespace ClientInfrastructure
             }
             set
             {
-
                 if (_currentItem != value)
                 {
                     _currentItem = value;
-                    if (_currentItem != null)
-                    {
-                        RaisePropertyChanged();
-                    }
-
-                }               
-
+                    RaisePropertyChanged();
+                }
             }
         }
 
-        
+
 
     }
 

@@ -21,19 +21,19 @@
         <TextBlock Grid.Row="0" Grid.Column="0" 
                    Text="Full name:"></TextBlock>
         <TextBox Grid.Row="0" Grid.Column="1"
-                 Text="{Binding RegionContext.CurrentItem.FullName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
+                 Text="{Binding RegionContext.EditItem.FullName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
                                 ValidatesOnDataErrors=True, NotifyOnValidationError=True }"/>
         <TextBlock Grid.Row="1" Grid.Column="0" 
                    Text="Nickname:"></TextBlock>
         <TextBox Grid.Row="1" Grid.Column="1"
-                 Text="{Binding RegionContext.CurrentItem.Nickname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                 Text="{Binding RegionContext.EditItem.Nickname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         <TextBlock Grid.Row="2" Grid.Column="0" 
                    Text="Address:"></TextBlock>
         <TextBox Grid.Row="2" Grid.Column="1"
-                 Text="{Binding RegionContext.CurrentItem.Address, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                 Text="{Binding RegionContext.EditItem.Address, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         <TextBlock Grid.Row="3" Grid.Column="0" 
                    Text="Company:"></TextBlock>
         <TextBox Grid.Row="3" Grid.Column="1"
-                 Text="{Binding RegionContext.CurrentItem.Company, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                 Text="{Binding RegionContext.EditItem.Company, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
     </Grid>
 </UserControl>

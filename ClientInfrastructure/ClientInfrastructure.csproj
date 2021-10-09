@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="BaseRegionController.cs" />
     <Compile Include="Converters\InverseBooleanConverter.cs" />
+    <Compile Include="DataState.cs" />
     <Compile Include="IViewSharedContext.cs" />
     <Compile Include="Constants\ModuleNames.cs" />
     <Compile Include="StaticReflection.cs" />

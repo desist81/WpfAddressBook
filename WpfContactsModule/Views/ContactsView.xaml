@@ -13,8 +13,8 @@
     </UserControl.Resources>
     <Grid IsEnabled="{Binding InInEditMode, Converter={StaticResource InverseBooleanConverter}}" >
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <ToolBarPanel Grid.Row="0">
             <ToolBar>
@@ -35,16 +35,14 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-
-                        <Grid Grid.Row="0">
-                            <ContentControl prism:RegionManager.RegionName="{x:Static localConst:ContactsRegionNames.ContactDetailsRegion}"/>
-
-                        </Grid>
-                        <Grid Grid.Row="1">
-                            <Button x:Name="btnSaveLabel" Content="Save" HorizontalAlignment="Left" Margin="1,2,0,0" Width="50" TabIndex="2"></Button>
-                            <Button x:Name="btnCancelLabel" HorizontalAlignment="Left" Margin="60,2,1,0" Content="Cancel" Width="50" TabIndex="2"></Button>
-                            <Grid/>
-                        </Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <ContentControl Grid.Row="0" Grid.ColumnSpan="2"
+                                        prism:RegionManager.RegionName="{x:Static localConst:ContactsRegionNames.ContactDetailsRegion}"/>
+                        <Button Grid.Row="1" Grid.Column="0" Content="Save" Command="{Binding SaveCommand}"/>
+                        <Button Grid.Row="1" Grid.Column="1" Content="Close" Command="{Binding CloseCommand}" />
                     </Grid>
                 </Border>
             </ContentControl>
@@ -56,8 +54,8 @@
 
 
             <!--<StackPanel Orientation="Vertical">      <ContentControl prism:RegionManager.RegionName="{x:Static localConst:ContactsRegionNames.ContactDetailsRegion}"/>
-                    <Button Content="Save" Command="{x:Static local:ModuleCommands.SaveCommand}"/>
-</StackPanel>-->
+                            <Button Content="Save" Command="{x:Static local:ModuleCommands.SaveCommand}"/>
+                            </StackPanel> -->
 
         </Popup>
     </Grid>

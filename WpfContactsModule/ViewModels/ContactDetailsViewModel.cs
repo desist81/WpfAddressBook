@@ -1,5 +1,7 @@
 ﻿using AppServiceInterfaces;
 using ClientInfrastructure.ViewModelsBase;
+using ClientModel;
+using Prism.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,18 +12,14 @@ namespace WpfContactsModule.ViewModels
 {
     public class ContactDetailsViewModel : BaseNotificationViewModel
     {
-        IContactStateAppService _moduleState;
-        IContactRepositoryAppService _repository;
         public ContactDetailsViewModel(IContactModule module,
-            IContactViewSharedContext context,
-            IContactStateAppService moduleState,
-            IContactRepositoryAppService repository)
-           : base(module)
+             IContactViewSharedContext context)
+            : base(module)
         {
-            _moduleState = moduleState;
-            _repository = repository;
+
             this.RegionContext = context;
-    
+
         }
+
     }
 }

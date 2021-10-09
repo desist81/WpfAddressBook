@@ -10,5 +10,7 @@ namespace WpfContactsModule
 {
     public interface IContactViewSharedContext : IViewSharedContext
     {
+        int CurrentIndex { get; set; }
+        INotifyPropertyChanged EditItem { get; set; }
     }
 }

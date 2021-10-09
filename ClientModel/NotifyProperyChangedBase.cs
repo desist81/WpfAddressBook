@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClientInfrastructure;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,6 +29,7 @@ namespace ClientModel
 
         #endregion
 
+        public DataState DataState { get; set; }
         #region Property changed
         internal virtual void OnPropertyChangedNotification(bool isPropertyValueChanged)
         { }
@@ -48,6 +50,7 @@ namespace ClientModel
 
         protected virtual void FirePropertyChanged(string propertyName, bool isPropertyValueChanged = true)
         {
+            if (this.DataState == DataState.Undefined) this.DataState = DataState.Modified;
             RaisePropertyChanged(propertyName);
             OnPropertyChangedNotification(isPropertyValueChanged);
         }
