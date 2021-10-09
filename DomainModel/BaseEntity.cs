@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Realms;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Xml.Serialization;
 
 namespace DomainModel
 {
-    public abstract class BaseEntity
+    public abstract class BaseEntity 
     {
         public BaseEntity()
         {

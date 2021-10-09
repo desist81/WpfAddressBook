@@ -1,6 +1,7 @@
 ﻿using AppServiceInterfaces;
 using ClientInfrastructure;
 using ClientModel;
+using DataProviderInterfates;
 using DomainModel;
 using System;
 using System.Collections.Generic;
@@ -13,35 +14,25 @@ namespace WpfContactsModule.AppServices
 {
     public class ContactRepositoryAppService : IContactRepositoryAppService
     {
-        static List<ContactBindingEntity> contacts;
+        private IContactDataProvider _dataProvider;
+        public ContactRepositoryAppService(IContactDataProvider dataProvider)
+        {
+            _dataProvider = dataProvider;
+        }
         public ObservableCollection<ContactBindingEntity> GetContactsCollection()
         {
-            //TODO: Reading from data provider
-            if (contacts == null)
-            {
-                contacts =
-                  new List<Contact>() {
-                    new Contact{Id=Guid.NewGuid(), FullName = "Contact 1"},
-                    new Contact{Id=Guid.NewGuid(), FullName = "Contact 2"},
-                    new Contact{Id=Guid.NewGuid(), FullName = "Contact 3"}}
-                  .Select(c => new ContactBindingEntity(c))
-                  .ToList();
-            }
-            else
-            {
-                contacts = contacts.Select(i => new ContactBindingEntity(i.DomainEntity)).ToList();
-            }
-
-            var observableContacts = new ObservableCollection<ContactBindingEntity>(contacts);
+            var contacts = _dataProvider.GetContacts(String.Empty);
+           
+            var bindingContacts = contacts.Select(c => new ContactBindingEntity(c)).ToList();
+            var observableContacts = new ObservableCollection<ContactBindingEntity>(bindingContacts);
             return observableContacts;
         }
 
         public void DeleteContact(ContactBindingEntity contact)
         {
-            //TODO: Reading from data provider
-            if (contacts != null)
+            if (contact != null)
             {
-                contacts.Remove(contact);
+                _dataProvider.DeleteContat(contact.Id);
             }
 
         }
@@ -50,28 +41,12 @@ namespace WpfContactsModule.AppServices
         {
             if (contact.DataState == DataState.Added)
             {
-                AddContact(contact);
+                _dataProvider.AddContat(contact.DomainEntity);
             }
             else if (contact.DataState == DataState.Modified)
             {
-                UpdateContact(contact);
+                _dataProvider.UpdateContat(contact.DomainEntity);
             }
-
-        }
-
-        private void AddContact(ContactBindingEntity contact)
-        {
-            //TODO: Add data to data provider
-            if (contacts != null)
-            {
-                contacts.Add(contact);
-            }
-        }
-
-        private void UpdateContact(ContactBindingEntity contact)
-        {
-           var existingContactIndex =  contacts.FindIndex(c => c.Id == contact.Id);
-            contacts[existingContactIndex] = contact;
         }
     }
 }

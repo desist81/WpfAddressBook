@@ -139,6 +139,7 @@ namespace WpfContactsModule.ViewModels
         #region Private Methods
         private void EditItem_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
+            
             RaisePropertyChanged(nameof(CanSave));
         }
 

@@ -9,9 +9,9 @@ namespace DataProviderInterfates
 {
     public interface IContactDataProvider : IDataProvider
     {
-        void GetContacts(string serachText);
+        IList<Contact> GetContacts(string serachText);
         void UpdateContat(Contact contact);
         void DeleteContat(Guid id);
-        void AddContat(Guid id);
+        void AddContat(Contact contact);
     }
 }

@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainModel", "DomainModel\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataProviderInterfates", "DataProviderInterfates\DataProviderInterfates.csproj", "{6966C992-F923-4645-9C94-CCA40FD2C528}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataProviders", "DataProviders\DataProviders.csproj", "{4A80AFB9-B608-4E7A-8FD7-06B8AEE97C8B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealmDataProviders", "RealmDataProviders\RealmDataProviders.csproj", "{4A80AFB9-B608-4E7A-8FD7-06B8AEE97C8B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

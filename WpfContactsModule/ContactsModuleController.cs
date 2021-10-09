@@ -12,7 +12,7 @@ using WpfContactsModule.Views;
 
 namespace WpfContactsModule
 {
-    public class ContactsModuleController : BaseRegionController
+    public sealed class ContactsModuleController : BaseRegionController
     {
        
         public ContactsModuleController(IContainerProvider container,
