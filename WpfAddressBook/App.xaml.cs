@@ -24,7 +24,6 @@ namespace WpfAddressBook
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.Register<IContactStateAppService, ContactStateAppService>();
         }
          
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)

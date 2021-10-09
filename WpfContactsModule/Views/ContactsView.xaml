@@ -5,26 +5,65 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:prism="http://prismlibrary.com/"
              xmlns:local="clr-namespace:WpfContactsModule"
+             xmlns:converters="clr-namespace:ClientInfrastructure.Converters;assembly=ClientInfrastructure"
              xmlns:localConst="clr-namespace:WpfContactsModule.Constants"
              mc:Ignorable="d">
-    <StackPanel Orientation="Vertical">
-        <ToolBarPanel>
+    <UserControl.Resources>
+        <converters:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
+    </UserControl.Resources>
+    <Grid IsEnabled="{Binding InInEditMode, Converter={StaticResource InverseBooleanConverter}}" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <ToolBarPanel Grid.Row="0">
             <ToolBar>
                 <Button Content="Add" Command="{Binding AddCommand}"></Button>
                 <Button Content="Refresh" Command="{x:Static local:ModuleCommands.RefreshCommand}"></Button>
             </ToolBar>
         </ToolBarPanel>
-        <ContentControl prism:RegionManager.RegionName="{x:Static localConst:ContactsRegionNames.ContactListRegion}"/>
+        <ContentControl  Grid.Row="1" prism:RegionManager.RegionName="{x:Static localConst:ContactsRegionNames.ContactListRegion}"/>
         <Popup IsOpen="{Binding InInEditMode}" 
-           PopupAnimation="Slide"  
-           HorizontalOffset="150"  
-           VerticalOffset="100">
-            <StackPanel Orientation="Vertical">
-                <ContentControl prism:RegionManager.RegionName="{x:Static localConst:ContactsRegionNames.ContactDetailsRegion}"/>
-                <Button Content="Save" Command="{x:Static local:ModuleCommands.SaveCommand}"/>
-            </StackPanel>
+               Placement="Center" 
+               VerticalAlignment="Stretch" 
+               HorizontalAlignment="Stretch"
+               AllowsTransparency="True">
+            <ContentControl x:Name="labelPopup">
+                <Border Background="WhiteSmoke" CornerRadius="10" BorderBrush="Black" BorderThickness="1">
+                    <Grid Margin="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0">
+                            <ContentControl prism:RegionManager.RegionName="{x:Static localConst:ContactsRegionNames.ContactDetailsRegion}"/>
+
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Button x:Name="btnSaveLabel" Content="Save" HorizontalAlignment="Left" Margin="1,2,0,0" Width="50" TabIndex="2"></Button>
+                            <Button x:Name="btnCancelLabel" HorizontalAlignment="Left" Margin="60,2,1,0" Content="Cancel" Width="50" TabIndex="2"></Button>
+                            <Grid/>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </ContentControl>
+
+
+
+
+
+
+
+            <!--<StackPanel Orientation="Vertical">      <ContentControl prism:RegionManager.RegionName="{x:Static localConst:ContactsRegionNames.ContactDetailsRegion}"/>
+                    <Button Content="Save" Command="{x:Static local:ModuleCommands.SaveCommand}"/>
+</StackPanel>-->
+
         </Popup>
-    </StackPanel>
+    </Grid>
+
+
+
 
 
 
