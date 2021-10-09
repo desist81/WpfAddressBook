@@ -63,7 +63,10 @@ namespace WpfContactsModule.ViewModels
         #region Add
         private void OnAddExecute()
         {
-            InInEditMode = true;   
+            InInEditMode = true;
+            DomainModel.Contact newContact = new DomainModel.Contact() { Id = Guid.NewGuid() };
+            ContactBindingEntity newContactBindingEntity = new ContactBindingEntity(newContact);
+            RegionContext.CurrentItem = newContactBindingEntity;
         }
         #endregion Add
 
