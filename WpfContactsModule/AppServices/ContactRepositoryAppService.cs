@@ -21,9 +21,9 @@ namespace WpfContactsModule.AppServices
             {
                 contacts =
                   new List<Contact>() {
-                    new Contact{FullName = "Contact 1"},
-                    new Contact{FullName = "Contact 2"},
-                    new Contact{FullName = "Contact 3"}}
+                    new Contact{Id=Guid.NewGuid(), FullName = "Contact 1"},
+                    new Contact{Id=Guid.NewGuid(), FullName = "Contact 2"},
+                    new Contact{Id=Guid.NewGuid(), FullName = "Contact 3"}}
                   .Select(c => new ContactBindingEntity(c))
                   .ToList();
             }
@@ -70,8 +70,8 @@ namespace WpfContactsModule.AppServices
 
         private void UpdateContact(ContactBindingEntity contact)
         {
-            //TODO: Update data to data provider
-
+           var existingContactIndex =  contacts.FindIndex(c => c.Id == contact.Id);
+            contacts[existingContactIndex] = contact;
         }
     }
 }

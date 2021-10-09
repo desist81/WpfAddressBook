@@ -41,7 +41,7 @@
                         </Grid.ColumnDefinitions>
                         <ContentControl Grid.Row="0" Grid.ColumnSpan="2"
                                         prism:RegionManager.RegionName="{x:Static localConst:ContactsRegionNames.ContactDetailsRegion}"/>
-                        <Button Grid.Row="1" Grid.Column="0" Content="Save" Command="{Binding SaveCommand}" IsEnabled="{Binding CanSave, Mode=OneWay}"/>
+                        <Button Grid.Row="1" Grid.Column="0" Content="Save" Command="{Binding SaveCommand}" IsEnabled="{Binding CanSave, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
                         <Button Grid.Row="1" Grid.Column="1" Content="Close" Command="{Binding CloseCommand}" />
                     </Grid>
                 </Border>

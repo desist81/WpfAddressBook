@@ -27,7 +27,7 @@ namespace ClientModel
                 if (base.CheckPropertyChanged<Guid>(DomainEntity.Id, value))
                 {
                     DomainEntity.Id = value;
-                    FirePropertyChanged(this.GetMemberName(p => p.Id));
+                    FirePropertyChanged(nameof(Id));
                 }
             }
         }
@@ -43,7 +43,7 @@ namespace ClientModel
                 if (base.CheckPropertyChanged<string>(DomainEntity.PhoneNumber, value))
                 {
                     DomainEntity.PhoneNumber = value;
-                    FirePropertyChanged(this.GetMemberName(p => p.PhoneNumber));
+                    FirePropertyChanged(nameof(PhoneNumber));
                 }
             }
         }

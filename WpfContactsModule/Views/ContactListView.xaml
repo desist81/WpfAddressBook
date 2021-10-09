@@ -22,17 +22,10 @@
 
                 <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="Contacts Book">
 
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=FullName}" Width="100">
-                        <GridViewColumnHeader>Full name
-                            <GridViewColumnHeader.ContextMenu>
-                                <ContextMenu Name="sortingFullName">
-                                    <MenuItem Header="Ascending" />
-                                    <MenuItem Header="Descending" />
-                                </ContextMenu>
-                            </GridViewColumnHeader.ContextMenu>
-                        </GridViewColumnHeader>
-                    </GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=Nickname}" Header="Nickname" Width="100"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=FullName}" Header="Full name"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Nickname}" Header="Nickname"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Address}" Header="Address"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Company}" Header="Company"/>
                 </GridView>
 
             </ListView.View>

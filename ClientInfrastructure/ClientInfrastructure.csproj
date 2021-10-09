@@ -62,7 +62,6 @@
     <Compile Include="DataState.cs" />
     <Compile Include="IViewSharedContext.cs" />
     <Compile Include="Constants\ModuleNames.cs" />
-    <Compile Include="StaticReflection.cs" />
     <Compile Include="ViewModelsBase\BaseNotificationViewModel.cs" />
     <Compile Include="Constants\RegionNames.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

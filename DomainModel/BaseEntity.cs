@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace DomainModel
 {
@@ -13,9 +15,15 @@ namespace DomainModel
             
         }
 
-        public virtual bool IsEmpty()
+        public T CreateDeepCopy<T>()
         {
-            return false;
+            using (var ms = new MemoryStream())
+            {
+                XmlSerializer serializer = new XmlSerializer(this.GetType());
+                serializer.Serialize(ms, this);
+                ms.Seek(0, SeekOrigin.Begin);
+                return (T)serializer.Deserialize(ms);
+            }
         }
     }
 

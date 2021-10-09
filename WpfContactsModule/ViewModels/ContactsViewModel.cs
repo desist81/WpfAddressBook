@@ -2,6 +2,7 @@
 using ClientInfrastructure;
 using ClientInfrastructure.ViewModelsBase;
 using ClientModel;
+using DomainModel;
 using Prism.Commands;
 using System;
 using System.Collections.Generic;
@@ -101,9 +102,10 @@ namespace WpfContactsModule.ViewModels
         private void OnEditExecute()
         {
             InInEditMode = true;
-            CurrentContext.EditItem = CurrentContext.CurrentItem as NotifyProperyChangedBase;
-            DetachListeners();
-
+            Contact contactToEdit = (CurrentContext.CurrentItem as ContactBindingEntity).DomainEntity.CreateDeepCopy<Contact>();
+            CurrentContext.EditItem = new ContactBindingEntity(contactToEdit);
+            AttachListeners();
+            RaisePropertyChanged(nameof(CanSave));
         }
 
         #endregion Edit
@@ -112,8 +114,7 @@ namespace WpfContactsModule.ViewModels
         private void OnCloseExecute()
         {
             InInEditMode = false;
-            CurrentContext.EditItem.PropertyChanged -= EditItem_PropertyChanged;
-            CurrentContext.EditItem.ErrorsChanged -= EditItem_ErrorsChanged;
+            DetachListeners();
             CurrentContext.EditItem = null;
         }
         #endregion Close
@@ -138,7 +139,7 @@ namespace WpfContactsModule.ViewModels
         #region Private Methods
         private void EditItem_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            SaveCommand.RaiseCanExecuteChanged();
+            RaisePropertyChanged(nameof(CanSave));
         }
 
         private void EditItem_ErrorsChanged(object sender, System.ComponentModel.DataErrorsChangedEventArgs e)
@@ -153,8 +154,8 @@ namespace WpfContactsModule.ViewModels
         }
         private void DetachListeners()
         {
-            CurrentContext.EditItem.PropertyChanged += EditItem_PropertyChanged;
-            CurrentContext.EditItem.ErrorsChanged += EditItem_ErrorsChanged;
+            CurrentContext.EditItem.PropertyChanged -= EditItem_PropertyChanged;
+            CurrentContext.EditItem.ErrorsChanged -= EditItem_ErrorsChanged;
         }
         #endregion Private Methods
     }

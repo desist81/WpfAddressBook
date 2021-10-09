@@ -54,7 +54,7 @@ namespace WpfContactsModule.ViewModels
         private void OnDeleteExecute()
         {
             _repository?.DeleteContact(RegionContext.CurrentItem as ContactBindingEntity);
-            RaisePropertyChanged(StaticReflection.GetMemberName<ContactListViewModel>(p => p.ContactsCollection));
+            RaisePropertyChanged(nameof(ContactsCollection));
 
         }
 
@@ -67,7 +67,7 @@ namespace WpfContactsModule.ViewModels
         #region Refresh
         private void OnRefreshExecute()
         {
-            RaisePropertyChanged(StaticReflection.GetMemberName<ContactListViewModel>(p => p.ContactsCollection));
+            RaisePropertyChanged(nameof(ContactsCollection));
         }
 
         #endregion Refresh

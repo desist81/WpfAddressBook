@@ -31,7 +31,7 @@ namespace ClientModel
                 if (base.CheckPropertyChanged<Guid>(DomainEntity.Id, value))
                 {
                     DomainEntity.Id = value;
-                    FirePropertyChanged(this.GetMemberName(p => p.Id));
+                    FirePropertyChanged(nameof(Id));
                 }
             }
         }
@@ -47,7 +47,7 @@ namespace ClientModel
                 if (base.CheckPropertyChanged<string>(DomainEntity.FullName, value))
                 {
                     DomainEntity.FullName = value;
-                    FirePropertyChanged(this.GetMemberName(p => p.FullName));
+                    FirePropertyChanged(nameof(FullName));
                 }
             }
         }
@@ -63,7 +63,7 @@ namespace ClientModel
                 if (base.CheckPropertyChanged<string>(DomainEntity.Nickname, value))
                 {
                     DomainEntity.Nickname = value;
-                    FirePropertyChanged(this.GetMemberName(p => p.Nickname));
+                    FirePropertyChanged(nameof(Nickname));
                 }
             }
         }
@@ -79,7 +79,7 @@ namespace ClientModel
                 if (base.CheckPropertyChanged<string>(DomainEntity.Address, value))
                 {
                     DomainEntity.Address = value;
-                    FirePropertyChanged(this.GetMemberName(p => p.Address));
+                    FirePropertyChanged(nameof(Address));
                 }
             }
         }
@@ -95,7 +95,7 @@ namespace ClientModel
                 if (base.CheckPropertyChanged<string>(DomainEntity.Company, value))
                 {
                     DomainEntity.Company = value;
-                    FirePropertyChanged(this.GetMemberName(p => p.Company));
+                    FirePropertyChanged(nameof(Company));
                 }
             }
         }
@@ -115,7 +115,7 @@ namespace ClientModel
                 if (_phoneNumbersCollection != value)
                 {
                     _phoneNumbersCollection = value;
-                    FirePropertyChanged(this.GetMemberName(p => p.PhoneNumbers), false);
+                    FirePropertyChanged(nameof(PhoneNumbers), false);
                 }
             }
         }
@@ -136,7 +136,7 @@ namespace ClientModel
                 if (_emailsCollection != value)
                 {
                     _emailsCollection = value;
-                    FirePropertyChanged(this.GetMemberName(p => p.Emails), false);
+                    FirePropertyChanged(nameof(Emails), false);
                 }
             }
         }
@@ -144,7 +144,7 @@ namespace ClientModel
 
         public override bool Validate()
         {
-            if (String.IsNullOrEmpty(this.FullName))
+            if (String.IsNullOrWhiteSpace(this.FullName))
                 AddError(nameof(FullName), "Required field");
             else
                 ClearErrors(nameof(FullName));
