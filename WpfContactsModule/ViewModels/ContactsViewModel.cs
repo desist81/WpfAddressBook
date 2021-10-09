@@ -28,9 +28,11 @@ namespace WpfContactsModule.ViewModels
             this.AddCommand = new DelegateCommand(OnAddExecute);
             this.EditCommand = new DelegateCommand(OnEditExecute);
             this.CloseCommand = new DelegateCommand(OnCloseExecute);
-            this.SaveCommand = new DelegateCommand(OnSaveExecute, OnSaveCanExecute);
+            this.SaveCommand = new DelegateCommand(OnSaveExecute);
             ModuleCommands.EditCommand.RegisterCommand(this.EditCommand);
+
         }
+
 
         #region Commands
         public DelegateCommand AddCommand { get; private set; }
@@ -87,8 +89,11 @@ namespace WpfContactsModule.ViewModels
                 DataState = DataState.Added
             };
             CurrentContext.EditItem = newContactBindingEntity;
-            SaveCommand.RaiseCanExecuteChanged();
+            AttachListeners();
+            RaisePropertyChanged(nameof(CanSave));
         }
+
+
         #endregion Add
 
 
@@ -96,8 +101,9 @@ namespace WpfContactsModule.ViewModels
         private void OnEditExecute()
         {
             InInEditMode = true;
-            CurrentContext.EditItem = CurrentContext.CurrentItem;
-            CurrentContext.EditItem.PropertyChanged += EditItem_PropertyChanged;            
+            CurrentContext.EditItem = CurrentContext.CurrentItem as NotifyProperyChangedBase;
+            DetachListeners();
+
         }
 
         #endregion Edit
@@ -107,6 +113,7 @@ namespace WpfContactsModule.ViewModels
         {
             InInEditMode = false;
             CurrentContext.EditItem.PropertyChanged -= EditItem_PropertyChanged;
+            CurrentContext.EditItem.ErrorsChanged -= EditItem_ErrorsChanged;
             CurrentContext.EditItem = null;
         }
         #endregion Close
@@ -114,26 +121,41 @@ namespace WpfContactsModule.ViewModels
         #region Save
         private void OnSaveExecute()
         {
-            _repository?.SaveContact(CurrentContext.EditItem as ContactBindingEntity);
-            InInEditMode = false;
-            CurrentContext.CurrentItem = CurrentContext.EditItem;
-            ModuleCommands.RefreshCommand.Execute(this);
+            if (CurrentContext.EditItem.Validate())
+            {
+                _repository?.SaveContact(CurrentContext.EditItem as ContactBindingEntity);
+                CurrentContext.CurrentItem = CurrentContext.EditItem;
+                OnCloseExecute();
+                ModuleCommands.RefreshCommand.Execute(this);
+            }
         }
 
-        private bool OnSaveCanExecute()
-        {
-            return CurrentContext.EditItem != null
+        public bool CanSave => CurrentContext.EditItem != null && !CurrentContext.EditItem.HasErrors
                 && (CurrentContext.EditItem as ContactBindingEntity).DataState != DataState.Undefined;
-        }
+
         #endregion Save
 
-
-
+        #region Private Methods
         private void EditItem_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             SaveCommand.RaiseCanExecuteChanged();
         }
 
+        private void EditItem_ErrorsChanged(object sender, System.ComponentModel.DataErrorsChangedEventArgs e)
+        {
+            RaisePropertyChanged(nameof(CanSave));
+        }
 
+        private void AttachListeners()
+        {
+            CurrentContext.EditItem.PropertyChanged += EditItem_PropertyChanged;
+            CurrentContext.EditItem.ErrorsChanged += EditItem_ErrorsChanged;
+        }
+        private void DetachListeners()
+        {
+            CurrentContext.EditItem.PropertyChanged += EditItem_PropertyChanged;
+            CurrentContext.EditItem.ErrorsChanged += EditItem_ErrorsChanged;
+        }
+        #endregion Private Methods
     }
 }

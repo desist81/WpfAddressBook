@@ -1,4 +1,5 @@
 ﻿using ClientInfrastructure;
+using ClientModel;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace WpfContactsModule
 {
     internal class ContactViewSharedContext : ViewSharedContext, IContactViewSharedContext
     {
-        INotifyPropertyChanged _editItem;
+        NotifyProperyChangedBase _editItem;
         int _currentIndex;
 
         public ContactViewSharedContext(string moduleName) : base(moduleName)
@@ -35,7 +36,7 @@ namespace WpfContactsModule
 
             }
         }
-        public INotifyPropertyChanged EditItem
+        public NotifyProperyChangedBase EditItem
         {
             get
             {

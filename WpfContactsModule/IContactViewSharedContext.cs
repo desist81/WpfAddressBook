@@ -1,4 +1,5 @@
 ﻿using ClientInfrastructure;
+using ClientModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,6 +12,6 @@ namespace WpfContactsModule
     public interface IContactViewSharedContext : IViewSharedContext
     {
         int CurrentIndex { get; set; }
-        INotifyPropertyChanged EditItem { get; set; }
+        NotifyProperyChangedBase EditItem { get; set; }
     }
 }

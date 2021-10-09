@@ -1,4 +1,5 @@
-﻿using DomainModel;
+﻿using ClientInfrastructure;
+using DomainModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,8 @@ namespace ClientModel
       where TEntity : BaseEntity
     {
         protected TEntity _domainEntity;
-      
+
+        public DataState DataState { get; set; }
 
         public NotifyBindingEntityProperyChanged()
             : base()
@@ -32,5 +34,10 @@ namespace ClientModel
             }
         }
 
+        internal override void OnPropertyChangedNotification(bool isPropertyValueChanged)
+        {
+            if (this.DataState == DataState.Undefined) this.DataState = DataState.Modified;
+            base.OnPropertyChangedNotification(isPropertyValueChanged);
+        }
     }
 }

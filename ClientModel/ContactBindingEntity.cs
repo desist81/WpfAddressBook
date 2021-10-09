@@ -36,7 +36,6 @@ namespace ClientModel
             }
         }
 
-        [Required(ErrorMessage = "This field is required")]
         public string FullName
         {
             get
@@ -140,6 +139,16 @@ namespace ClientModel
                     FirePropertyChanged(this.GetMemberName(p => p.Emails), false);
                 }
             }
+        }
+
+
+        public override bool Validate()
+        {
+            if (String.IsNullOrEmpty(this.FullName))
+                AddError(nameof(FullName), "Required field");
+            else
+                ClearErrors(nameof(FullName));
+            return !HasErrors;
         }
     }
 }

@@ -12,13 +12,6 @@ namespace ClientModel
 {
     public abstract partial class NotifyProperyChangedBase : INotifyPropertyChanged, INotifyDataErrorInfo
     {
-        #region INotifyPropertyChanged Members
-
-        public event PropertyChangedEventHandler PropertyChanged = delegate { };
-
-        private Dictionary<string, List<string>> errorMessages = new Dictionary<string, List<string>>();
-
-        #endregion
 
         #region Constructor
 
@@ -29,8 +22,10 @@ namespace ClientModel
 
         #endregion
 
-        public DataState DataState { get; set; }
+     
         #region Property changed
+
+        public event PropertyChangedEventHandler PropertyChanged = delegate { };
         internal virtual void OnPropertyChangedNotification(bool isPropertyValueChanged)
         { }
         protected bool CheckPropertyChanged<T>(T oldValue, T newValue)
@@ -50,12 +45,12 @@ namespace ClientModel
 
         protected virtual void FirePropertyChanged(string propertyName, bool isPropertyValueChanged = true)
         {
-            if (this.DataState == DataState.Undefined) this.DataState = DataState.Modified;
+            Validate();
             RaisePropertyChanged(propertyName);
             OnPropertyChangedNotification(isPropertyValueChanged);
         }
 
-        public void RaisePropertyChanged(string propertyName)
+        private void RaisePropertyChanged(string propertyName)
         {
             if (this.PropertyChanged != null)
             {
@@ -65,33 +60,51 @@ namespace ClientModel
 
         #endregion
 
-        #region Errors region
-        public bool HasErrors => errorMessages.Any();
+        #region Validation
 
-        public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged = delegate { };
+        private readonly Dictionary<string, List<string>> errors = new Dictionary<string, List<string>>();
+
+        public bool HasErrors => errors.Any();
+
+        public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
 
         public IEnumerable GetErrors(string propertyName)
         {
-            return errorMessages.ContainsKey(propertyName) ?
-                errorMessages[propertyName] : null;
-        }
-        private void NotifyErrorsChanged(string propertyName)
-        {
-            ErrorsChanged(this, new DataErrorsChangedEventArgs(propertyName));
-        }
-        protected void ClearAllErrorMessages()
-        {
-            errorMessages = new Dictionary<string, List<string>>();
+            if (errors.ContainsKey(propertyName)) return errors[propertyName];
+            return new string[0];
         }
 
-        private void ClearErrorMessagesForProperty(string propertyName)
+        public void AddError(string propertyName, string errorMessage)
         {
-            errorMessages.Remove(propertyName);
+            if (!errors.ContainsKey(propertyName))
+            {
+                errors.Add(propertyName, new List<string>());
+            }
+
+            errors[propertyName].Add(errorMessage);
+            OnErrorsChanged(propertyName);
         }
 
-        #endregion
+        public void ClearErrors(string propertyName)
+        {
+            if (errors.Remove(propertyName))
+            {
+                OnErrorsChanged(propertyName);
+            }
+        }
 
+        private void OnErrorsChanged(string propertyName)
+        {
+            ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
+        }
+
+        public virtual bool Validate()
+        {
+            return true;
+        }
+
+        #endregion  Validation
     }
 
-
 }
+
