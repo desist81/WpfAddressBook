@@ -7,7 +7,15 @@
              xmlns:prism="http://prismlibrary.com/"
              mc:Ignorable="d">
     <Grid>
-        <ListView
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
+            <TextBlock Text="Search:"></TextBlock>
+            <TextBox Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        </StackPanel>
+        <ListView Grid.Row="1"
             ItemsSource="{Binding ContactsCollection}"
             SelectedItem="{Binding RegionContext.CurrentItem, Mode=TwoWay}"
             SelectedIndex="{Binding RegionContext.CurrentIndex, Mode=TwoWay}">

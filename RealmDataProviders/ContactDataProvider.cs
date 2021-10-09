@@ -35,8 +35,24 @@ namespace RealmDataProviders
         public IList<Contact> GetContacts(string serachText)
         {
             IQueryable<RContact> rContacts;
-            //Ask about culture info, collations, case sensitive compare
-            rContacts = RealmInstance.All<RContact>().Where(c => c.FullName.Contains(serachText));
+            if (!String.IsNullOrWhiteSpace(serachText))
+            {
+                //TODO: Ask about culture info, collations, case sensitive compare
+
+                rContacts = RealmInstance.All<RContact>().Where(c =>
+                c.FullName.Contains(serachText)
+                || c.Nickname.Contains(serachText)
+                || c.Address.Contains(serachText)
+                || c.Company.Contains(serachText));
+
+                //TODO: Check how to search in phones and emails
+                //|| c.Emails.Filter(serachText) != null
+                //|| c.PhoneNumbers.Filter(serachText) != null);
+            }
+            else
+            {
+                rContacts = RealmInstance.All<RContact>();
+            }
             List<Contact> contacts = rContacts.ToList().Select(c => Map.Mapper.Map<Contact>(c)).ToList();
 
             return contacts;

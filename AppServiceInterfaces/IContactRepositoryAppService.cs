@@ -10,7 +10,7 @@ namespace AppServiceInterfaces
 {
     public interface IContactRepositoryAppService
     {
-        ObservableCollection<ContactBindingEntity> GetContactsCollection();
+        ObservableCollection<ContactBindingEntity> GetContactsCollection(string searchText);
         void DeleteContact(ContactBindingEntity contact);
 
         void SaveContact(ContactBindingEntity contact);

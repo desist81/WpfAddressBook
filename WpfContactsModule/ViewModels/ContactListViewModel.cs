@@ -14,8 +14,9 @@ namespace WpfContactsModule.ViewModels
 {
     public class ContactListViewModel : BaseNotificationViewModel
     {
-        IContactStateAppService _moduleState;
-        IContactRepositoryAppService _repository;
+        private IContactStateAppService _moduleState;
+        private IContactRepositoryAppService _repository;
+        private string _searchText;
 
         public ContactListViewModel(IContactModule module,
             IContactViewSharedContext context,
@@ -39,11 +40,24 @@ namespace WpfContactsModule.ViewModels
         #endregion Commands
 
         #region Properties
+        public string SearchText
+        {
+            get
+            {
+                return _searchText;
+            }
+            set
+            {
+                _searchText = value;
+                RaisePropertyChanged();
+                RaisePropertyChanged(nameof(ContactsCollection));
+            }
+        }
         public ObservableCollection<ContactBindingEntity> ContactsCollection
         {
             get
             {
-                return _repository?.GetContactsCollection();
+                return _repository?.GetContactsCollection(SearchText);
 
             }
         }
@@ -67,7 +81,7 @@ namespace WpfContactsModule.ViewModels
         #region Refresh
         private void OnRefreshExecute()
         {
-            RaisePropertyChanged(nameof(ContactsCollection));
+            SearchText = String.Empty;
         }
 
         #endregion Refresh

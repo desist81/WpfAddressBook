@@ -19,9 +19,9 @@ namespace WpfContactsModule.AppServices
         {
             _dataProvider = dataProvider;
         }
-        public ObservableCollection<ContactBindingEntity> GetContactsCollection()
+        public ObservableCollection<ContactBindingEntity> GetContactsCollection(string searchText)
         {
-            var contacts = _dataProvider.GetContacts(String.Empty);
+            var contacts = _dataProvider.GetContacts(searchText);
            
             var bindingContacts = contacts.Select(c => new ContactBindingEntity(c)).ToList();
             var observableContacts = new ObservableCollection<ContactBindingEntity>(bindingContacts);
