@@ -10,6 +10,7 @@ namespace WpfContactsModule
     public static class ModuleCommands
     {
         public static CompositeCommand RefreshCommand = new CompositeCommand();
+        public static CompositeCommand EditCommand = new CompositeCommand();
     }
-   
+
 }

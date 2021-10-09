@@ -26,12 +26,15 @@ namespace WpfContactsModule.ViewModels
             _repository = repository;
             this.RegionContext = context;
             this.AddCommand = new DelegateCommand(OnAddExecute);
+            this.EditCommand = new DelegateCommand(OnEditExecute);
             this.CloseCommand = new DelegateCommand(OnCloseExecute);
             this.SaveCommand = new DelegateCommand(OnSaveExecute, OnSaveCanExecute);
+            ModuleCommands.EditCommand.RegisterCommand(this.EditCommand);
         }
 
         #region Commands
         public DelegateCommand AddCommand { get; private set; }
+        public DelegateCommand EditCommand { get; private set; }
         public DelegateCommand CloseCommand { get; private set; }
         public DelegateCommand SaveCommand { get; private set; }
 
@@ -88,10 +91,22 @@ namespace WpfContactsModule.ViewModels
         }
         #endregion Add
 
+
+        #region Edit
+        private void OnEditExecute()
+        {
+            InInEditMode = true;
+            CurrentContext.EditItem = CurrentContext.CurrentItem;
+            CurrentContext.EditItem.PropertyChanged += EditItem_PropertyChanged;            
+        }
+
+        #endregion Edit
+
         #region Close
         private void OnCloseExecute()
         {
             InInEditMode = false;
+            CurrentContext.EditItem.PropertyChanged -= EditItem_PropertyChanged;
             CurrentContext.EditItem = null;
         }
         #endregion Close
@@ -111,6 +126,14 @@ namespace WpfContactsModule.ViewModels
                 && (CurrentContext.EditItem as ContactBindingEntity).DataState != DataState.Undefined;
         }
         #endregion Save
+
+
+
+        private void EditItem_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            SaveCommand.RaiseCanExecuteChanged();
+        }
+
 
     }
 }

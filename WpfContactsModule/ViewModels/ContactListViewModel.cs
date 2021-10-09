@@ -64,7 +64,6 @@ namespace WpfContactsModule.ViewModels
         }
         #endregion Delete
 
-
         #region Refresh
         private void OnRefreshExecute()
         {
@@ -72,5 +71,6 @@ namespace WpfContactsModule.ViewModels
         }
 
         #endregion Refresh
+
     }
 }

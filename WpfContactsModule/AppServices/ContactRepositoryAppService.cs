@@ -27,6 +27,10 @@ namespace WpfContactsModule.AppServices
                   .Select(c => new ContactBindingEntity(c))
                   .ToList();
             }
+            else
+            {
+                contacts = contacts.Select(i => new ContactBindingEntity(i.DomainEntity)).ToList();
+            }
 
             var observableContacts = new ObservableCollection<ContactBindingEntity>(contacts);
             return observableContacts;
@@ -40,7 +44,7 @@ namespace WpfContactsModule.AppServices
                 contacts.Remove(contact);
             }
 
-        }            
+        }
 
         public void SaveContact(ContactBindingEntity contact)
         {
@@ -67,7 +71,7 @@ namespace WpfContactsModule.AppServices
         private void UpdateContact(ContactBindingEntity contact)
         {
             //TODO: Update data to data provider
-          
+
         }
     }
 }
