@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace WpfContactsModule
 {
-    internal class ContactViewSharedContext : ViewSharedContext, IContactViewSharedContext
+    public class ContactViewSharedContext : ViewSharedContext, IContactViewSharedContext
     {
         NotifyProperyChangedBase _editItem;
         int _currentIndex;

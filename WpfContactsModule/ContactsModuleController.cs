@@ -22,7 +22,7 @@ namespace WpfContactsModule
            
         }
 
-        internal void LoadView()
+        public void LoadView()
         {
             this._regionManager.RegisterViewWithRegion(RegionNames.MainWindowRegion, () => this._container.Resolve<ContactsView>());
             this._regionManager.RegisterViewWithRegion(ContactsRegionNames.ContactListRegion, () => this._container.Resolve<ContactListView>());

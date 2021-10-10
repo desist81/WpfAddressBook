@@ -20,8 +20,7 @@ namespace WpfContactsModule
 {
     public sealed class ContactsModule : IContactModule
     {
-        ContactsModuleController _moduleController;
-
+        
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterInstance<IContactModule>(this);
@@ -29,16 +28,16 @@ namespace WpfContactsModule
             containerRegistry.Register<IContactRepositoryAppService, ContactRepositoryAppService>();
             containerRegistry.RegisterSingleton<IContactStateAppService,ContactStateAppService>();
             containerRegistry.Register<IContactDataProvider, ContactDataProvider>();
-
+           
         }
 
         public void OnInitialized(IContainerProvider containerProvider)
         {
             RegisterViews(containerProvider);
-            _moduleController = containerProvider.Resolve<ContactsModuleController>();
-            _moduleController.ModuleName = ModuleNames.ContactsModule;
+            ContactsModuleController moduleController = containerProvider.Resolve<ContactsModuleController>();
+            moduleController.ModuleName = ModuleNames.ContactsModule;
            
-            _moduleController.LoadView();
+            moduleController.LoadView();
         }
 
         private static void RegisterViews(IContainerProvider containerProvider)
