@@ -10,15 +10,13 @@ namespace DomainModel
     {
         public Contact()
         {
-            PhoneNumbers = new List<ContactPhone>();
-            Emails = new List<ContactEmail>();
+            Fields = new List<ContactField>();
         }
         public Guid Id { get; set; }
         public string FullName { get; set; }
         public string Nickname { get; set; }
         public string Address { get; set; }
         public string Company { get; set; }
-        public IList<ContactPhone> PhoneNumbers { get; }
-        public IList<ContactEmail> Emails { get; }
+        public IList<ContactField> Fields { get; }
     }
 }

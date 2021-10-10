@@ -127,6 +127,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Labels.resx</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ContactFields.xaml.cs">
+      <DependentUpon>ContactFields.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\ContactDetailsViewModel.cs" />
     <Compile Include="ViewModels\ContactsViewModel.cs" />
     <Compile Include="ViewModels\ContactListViewModel.cs" />
@@ -163,6 +166,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="UserControls\ContactFields.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ContactDetailsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

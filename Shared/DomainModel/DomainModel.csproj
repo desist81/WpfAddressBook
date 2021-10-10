@@ -48,8 +48,8 @@
   <ItemGroup>
     <Compile Include="BaseEntity.cs" />
     <Compile Include="Contact.cs" />
-    <Compile Include="ContactEmail.cs" />
-    <Compile Include="ContactPhone.cs" />
+    <Compile Include="ContactField.cs" />
+    <Compile Include="FieldType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

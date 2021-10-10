@@ -70,6 +70,15 @@ namespace WpfContactsModule.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add.
+        /// </summary>
+        public static string btnAddContactField {
+            get {
+                return ResourceManager.GetString("btnAddContactField", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Close.
         /// </summary>
         public static string btnCloseContact {
@@ -84,6 +93,15 @@ namespace WpfContactsModule.Resources {
         public static string btnDeleteContact {
             get {
                 return ResourceManager.GetString("btnDeleteContact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        public static string btnDeleteContactField {
+            get {
+                return ResourceManager.GetString("btnDeleteContactField", resourceCulture);
             }
         }
         

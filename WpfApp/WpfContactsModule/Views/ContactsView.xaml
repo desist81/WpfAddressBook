@@ -42,8 +42,13 @@
                         </Grid.ColumnDefinitions>
                         <ContentControl Grid.Row="0" Grid.ColumnSpan="2"
                                         prism:RegionManager.RegionName="{x:Static localConst:ContactsRegionNames.ContactDetailsRegion}"/>
-                        <Button Grid.Row="1" Grid.Column="0" Content="{x:Static resx:Buttons.btnSaveContact}" Command="{Binding SaveCommand}" IsEnabled="{Binding CanSave, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
-                        <Button Grid.Row="1" Grid.Column="1" Content="{x:Static resx:Buttons.btnCloseContact}" Command="{Binding CloseCommand}" />
+                        <Button Grid.Row="1" Grid.Column="0" 
+                                Content="{x:Static resx:Buttons.btnSaveContact}" 
+                                Command="{Binding SaveCommand}" 
+                                IsEnabled="{Binding CanSave, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Button Grid.Row="1" Grid.Column="1" 
+                                Content="{x:Static resx:Buttons.btnCloseContact}" 
+                                Command="{Binding CloseCommand}" />
                     </Grid>
                 </Border>
             </ContentControl>

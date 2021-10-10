@@ -8,19 +8,19 @@
 
 //namespace RealmDataProviders
 //{
-//    public class ContactPhonelDataProvider : IContactPhoneDataProvider
+//    public class ContactFieldDataProvider : IContactFieldDataProvider
 //    {
-//        public void AddContatPhone(ContactPhone phone)
+//        public void AddContatEmail(ContactEmail email)
 //        {
 //            throw new NotImplementedException();
 //        }
 
-//        public void DeleteContatPhone(Guid id)
+//        public void DeleteContatEmail(Guid id)
 //        {
 //            throw new NotImplementedException();
 //        }
 
-//        public void UpdateContatPhone(ContactPhone phone)
+//        public void UpdateContatEmail(ContactEmail email)
 //        {
 //            throw new NotImplementedException();
 //        }

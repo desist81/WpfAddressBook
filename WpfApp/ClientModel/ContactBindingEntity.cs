@@ -12,8 +12,7 @@ namespace ClientModel
 {
     public class ContactBindingEntity : NotifyBindingEntityProperyChanged<Contact>
     {
-        ObservableCollection<ContactPhoneBindingEntity> _phoneNumbersCollection;
-        ObservableCollection<ContactEmailBindingEntity> _emailsCollection;
+        ObservableCollection<ContactFieldBindingEntity> _fieldsCollection;
 
         public ContactBindingEntity(Contact domainEntity) :
             base(domainEntity)
@@ -99,48 +98,26 @@ namespace ClientModel
                 }
             }
         }
-        public ObservableCollection<ContactPhoneBindingEntity> PhoneNumbers
+        public ObservableCollection<ContactFieldBindingEntity> Fields
         {
             get
             {
-                if (_phoneNumbersCollection == null)
+                if (_fieldsCollection == null)
                 {
-                    _phoneNumbersCollection = new ObservableCollection<ContactPhoneBindingEntity>(
-                        DomainEntity.PhoneNumbers.Select(p => new ContactPhoneBindingEntity(p)));
+                    _fieldsCollection = new ObservableCollection<ContactFieldBindingEntity>(
+                        DomainEntity.Fields.Select(f => new ContactFieldBindingEntity(f)));
                 }
-                return _phoneNumbersCollection;
+                return _fieldsCollection;
             }
             set
             {
-                if (_phoneNumbersCollection != value)
+                if (_fieldsCollection != value)
                 {
-                    _phoneNumbersCollection = value;
-                    FirePropertyChanged(nameof(PhoneNumbers), false);
+                    _fieldsCollection = value;
+                    FirePropertyChanged(nameof(Fields), false);
                 }
             }
         }
-
-        public ObservableCollection<ContactEmailBindingEntity> Emails
-        {
-            get
-            {
-                if (_emailsCollection == null)
-                {
-                    _emailsCollection = new ObservableCollection<ContactEmailBindingEntity>(
-                        DomainEntity.Emails.Select(p => new ContactEmailBindingEntity(p)));
-                }
-                return _emailsCollection;
-            }
-            set
-            {
-                if (_emailsCollection != value)
-                {
-                    _emailsCollection = value;
-                    FirePropertyChanged(nameof(Emails), false);
-                }
-            }
-        }
-
 
         public override bool Validate()
         {

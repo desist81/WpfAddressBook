@@ -18,10 +18,8 @@ namespace RealmDataProviders.Entities
         public string Address { get; set; }
         public string Company { get; set; }
 
-        //[Backlink(nameof(RContactPhone.Contact))] 
-        public IList<RContactPhone> PhoneNumbers { get; }
+        //[Backlink(nameof(RContactField.Contact))] 
+        public IList<RContactField> Fields { get; }
 
-        //[Backlink(nameof(RContactEmail.Contact))]
-        public IList<RContactEmail> Emails { get; }
     }
 }

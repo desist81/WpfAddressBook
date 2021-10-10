@@ -8,12 +8,14 @@ using System.Threading.Tasks;
 
 namespace RealmDataProviders.Entities
 {
-    public class RContactEmail : RealmObject
+    public class RContactField : RealmObject
     {
         public Guid Id { get; set; } 
         
         [Required] 
-        public string Email { get; set; }
+        public string Content { get; set; }
+
+        public byte FieldType { get; set; }
 
         //public RContact Contact { get; set; }
     }

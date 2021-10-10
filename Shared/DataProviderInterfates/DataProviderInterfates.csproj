@@ -41,8 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IContactEmailDataProvider.cs" />
-    <Compile Include="IContactPhoneDataProvider.cs" />
+    <Compile Include="IContactFieldDataProvider.cs" />
     <Compile Include="IDataProvider.cs" />
     <Compile Include="IContactDataProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

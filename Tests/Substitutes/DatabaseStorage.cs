@@ -7,9 +7,8 @@ namespace Substitutes
     public class DatabaseStorage
     {
         Dictionary<Guid, DomainModel.Contact> _contactDatabase = new Dictionary<Guid, DomainModel.Contact>();
-        Dictionary<Guid, DomainModel.ContactEmail> _contactEmailDatabase = new Dictionary<Guid, DomainModel.ContactEmail>();
-        Dictionary<Guid, DomainModel.ContactPhone> _contactPhoneDatabase = new Dictionary<Guid, DomainModel.ContactPhone>();
-
+        Dictionary<Guid, DomainModel.ContactField> _contactFieldsDatabase = new Dictionary<Guid, DomainModel.ContactField>();
+     
         public DatabaseStorage()
         {
         }
@@ -22,20 +21,14 @@ namespace Substitutes
             }
         }
 
-        public Dictionary<Guid, DomainModel.ContactEmail> ContactEmails
+        public Dictionary<Guid, DomainModel.ContactField> ContactFields
         {
             get
             {
-                return _contactEmailDatabase;
+                return _contactFieldsDatabase;
             }
         }
 
-        public Dictionary<Guid, DomainModel.ContactPhone> ContactPhones
-        {
-            get
-            {
-                return _contactPhoneDatabase;
-            }
-        }
+       
     }
 }

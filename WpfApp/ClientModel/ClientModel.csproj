@@ -45,8 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ContactEmailBindingEntity.cs" />
-    <Compile Include="ContactPhoneBindingEntity.cs" />
+    <Compile Include="ContactFieldBindingEntity.cs" />
     <Compile Include="ContactBindingEntity.cs" />
     <Compile Include="NotifyBindingEntityProperyChanged.cs" />
     <Compile Include="NotifyProperyChangedBase.cs" />

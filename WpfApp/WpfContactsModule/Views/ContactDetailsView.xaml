@@ -4,10 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfContactsModule.Views"
+             xmlns:uc="clr-namespace:WpfContactsModule.UserControls"
              xmlns:resx="clr-namespace:WpfContactsModule.Resources"
              mc:Ignorable="d">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -51,5 +55,17 @@
                      ValidatesOnDataErrors="True" 
                      NotifyOnValidationError="True" />
         </TextBox>
+        <uc:ContactFields Grid.Row="4" Grid.ColumnSpan="2"
+                          LabelString="Emails"
+                          FieldType="Email"
+                          DeleteFieldCommand="{Binding DeleteContactFieldCommand}"
+                          AddFieldCommand="{Binding AddContactFieldCommand}"
+                          ContactFieldSource="{Binding ContactEmailsCollection, Mode=OneWay}"/>
+        <uc:ContactFields Grid.Row="5" Grid.ColumnSpan="2"
+                          LabelString="Phones"
+                          FieldType="Phone"
+                          DeleteFieldCommand="{Binding DeleteContactFieldCommand}"
+                          AddFieldCommand="{Binding AddContactFieldCommand}"
+                          ContactFieldSource="{Binding ContactPhonesCollection, Mode=OneWay}"/>
     </Grid>
 </UserControl>

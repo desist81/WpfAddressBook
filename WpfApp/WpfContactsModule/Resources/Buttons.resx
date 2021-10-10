@@ -120,10 +120,16 @@
   <data name="btnAddContact" xml:space="preserve">
     <value>Add</value>
   </data>
+  <data name="btnAddContactField" xml:space="preserve">
+    <value>Add</value>
+  </data>
   <data name="btnCloseContact" xml:space="preserve">
     <value>Close</value>
   </data>
   <data name="btnDeleteContact" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="btnDeleteContactField" xml:space="preserve">
     <value>Delete</value>
   </data>
   <data name="btnEditContact" xml:space="preserve">

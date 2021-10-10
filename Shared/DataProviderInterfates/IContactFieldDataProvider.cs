@@ -7,7 +7,7 @@
 
 //namespace DataProviderInterfates
 //{
-//    public interface IContactEmailDataProvider : IDataProvider
+//    public interface ContactFieldDataProvider : IDataProvider
 //    {
 //        void DeleteContatEmail(Guid id);
 //        void UpdateContatEmail(ContactEmail email);

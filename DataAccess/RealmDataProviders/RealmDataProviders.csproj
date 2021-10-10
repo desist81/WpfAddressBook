@@ -82,8 +82,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ContactEmailDataProvider.cs" />
-    <Compile Include="ContactPhonelDataProvider.cs" />
+    <Compile Include="ContactFieldDataProvider.cs" />
     <Compile Include="ContactDataProvider.cs" />
     <Compile Include="DataProvider.cs" />
     <Compile Include="Entities\RContact.cs" />
