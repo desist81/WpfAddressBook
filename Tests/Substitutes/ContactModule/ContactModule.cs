@@ -38,6 +38,7 @@ namespace Substitutes.ContactModule
                 containerRegistry.Register<IContactRepositoryAppService, ContactRepositoryAppService>();
                 containerRegistry.RegisterSingleton<IContactStateAppService, ContactStateAppService>();
                 containerRegistry.Register<IContactDataProvider, ContactDataProviderMock>();
+                containerRegistry.Register<IContactFieldDataProvider, ContactFieldDataProviderMock>();
 
             });
 

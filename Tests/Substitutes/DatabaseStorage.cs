@@ -6,8 +6,8 @@ namespace Substitutes
 {
     public class DatabaseStorage
     {
-        Dictionary<Guid, DomainModel.Contact> _contactDatabase = new Dictionary<Guid, DomainModel.Contact>();
-        Dictionary<Guid, DomainModel.ContactField> _contactFieldsDatabase = new Dictionary<Guid, DomainModel.ContactField>();
+        private readonly Dictionary<Guid, DomainModel.Contact> _contactDatabase = new Dictionary<Guid, DomainModel.Contact>();
+        private readonly Dictionary<Guid, DomainModel.ContactField> _contactFieldsDatabase = new Dictionary<Guid, DomainModel.ContactField>();
      
         public DatabaseStorage()
         {

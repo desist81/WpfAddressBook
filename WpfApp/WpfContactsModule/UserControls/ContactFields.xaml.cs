@@ -31,8 +31,8 @@ namespace WpfContactsModule.UserControls
         private ObservableCollection<ContactFieldBindingEntity> _contactFieldCollection;
         public ContactFields()
         {
-            this.DeleteContactFieldCommand = new DelegateCommand<object>(OnDeleteContactFieldExecute, OnDeleteContactFieldCanExecute);
-            this.AddContactFieldCommand = new DelegateCommand<object>(OnAddContactFieldExecute, OnAddContactFieldCanExecute);
+            this.DeleteContactFieldCommand = new DelegateCommand<object>(OnDeleteContactFieldExecute);
+            this.AddContactFieldCommand = new DelegateCommand<object>(OnAddContactFieldExecute);
             InitializeComponent();
 
         }
@@ -149,11 +149,6 @@ namespace WpfContactsModule.UserControls
             }
         }
 
-        private bool OnDeleteContactFieldCanExecute(object itemPanel)
-        {
-            return true;
-        }
-
         private void OnDeleteContactFieldExecute(object selectedItem)
         {
             if (this.DeleteFieldCommand != null)
@@ -162,10 +157,6 @@ namespace WpfContactsModule.UserControls
             }
         }
 
-        private bool OnAddContactFieldCanExecute(object itemPanel)
-        {
-            return true;
-        }
 
         private void OnAddContactFieldExecute(object text)
         {
@@ -202,8 +193,6 @@ namespace WpfContactsModule.UserControls
             ContactFields contactFields = d as ContactFields;
             if (contactFields != null)
             {
-                IList oldValue = e.OldValue as IList;
-                IList newValue = e.NewValue as IList;
                 contactFields.ContactFieldCollection = e.NewValue as ObservableCollection<ContactFieldBindingEntity>;
             }
         }

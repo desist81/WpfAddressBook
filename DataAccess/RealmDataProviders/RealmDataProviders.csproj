@@ -86,8 +86,7 @@
     <Compile Include="ContactDataProvider.cs" />
     <Compile Include="DataProvider.cs" />
     <Compile Include="Entities\RContact.cs" />
-    <Compile Include="Entities\RContactEmail.cs" />
-    <Compile Include="Entities\RContactPhone.cs" />
+    <Compile Include="Entities\RContactField.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Translators\ContactTranslator.cs" />
   </ItemGroup>

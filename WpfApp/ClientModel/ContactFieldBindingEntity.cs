@@ -10,7 +10,7 @@ namespace ClientModel
 {
     public class ContactFieldBindingEntity : NotifyBindingEntityProperyChanged<ContactField>
     {
-
+        private ContactBindingEntity _contact;
         public ContactFieldBindingEntity(ContactField domainEntity) :
             base(domainEntity)
         {
@@ -60,6 +60,28 @@ namespace ClientModel
                 {
                     DomainEntity.FieldType = value;
                     FirePropertyChanged(nameof(FieldType));
+                }
+            }
+        }
+
+
+        public ContactBindingEntity Contact
+        {
+            get
+            {
+                if (_contact == null)
+                {
+                    _contact = new ContactBindingEntity(DomainEntity.Contact);
+                }
+                    return _contact;
+            }
+            set
+            {
+                if (base.CheckPropertyChanged<ContactBindingEntity>(_contact, value))
+                {
+                    _contact = value;
+                    DomainEntity.Contact = _contact.DomainEntity;
+                    FirePropertyChanged(nameof(Contact));
                 }
             }
         }

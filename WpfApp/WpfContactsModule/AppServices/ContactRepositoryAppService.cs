@@ -16,9 +16,12 @@ namespace WpfContactsModule.AppServices
     {
 
         private IContactDataProvider _contactDataProvider;
-        public ContactRepositoryAppService(IContactDataProvider contactDataProvider)
+        private IContactFieldDataProvider _contactFieldDataProvider;
+        public ContactRepositoryAppService(IContactDataProvider contactDataProvider,
+            IContactFieldDataProvider contactFieldDataProvider)
         {           
             _contactDataProvider = contactDataProvider;
+            _contactFieldDataProvider = contactFieldDataProvider;
         }
         public ObservableCollection<ContactBindingEntity> GetContactsCollection(string searchText)
         {
@@ -47,6 +50,16 @@ namespace WpfContactsModule.AppServices
             else if (contact.DataState == DataState.Modified)
             {
                 _contactDataProvider.UpdateContat(contact.DomainEntity);
+            }
+            var addedFields = contact.Fields.Where(f => f.DataState == DataState.Added).ToList();
+            foreach (var addedField in addedFields)
+            {
+                _contactFieldDataProvider.AddContactField(addedField.DomainEntity);
+            }
+            var deletedFields = contact.Fields.Where(f => f.DataState == DataState.Deleted).ToList();
+            foreach (var deletedField in deletedFields)
+            {
+                _contactFieldDataProvider.DeleteContactField(deletedField.Id);
             }
         }
     }

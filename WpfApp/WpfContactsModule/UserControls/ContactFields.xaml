@@ -23,7 +23,7 @@
             UpdateSourceTrigger=PropertyChanged, 
             Mode=TwoWay}"/>
         <TextBox Grid.Row="0" Grid.Column="1" x:Name="txtFieldContent"/>
-        <Button Grid.Row="0" Grid.Column="2" 
+        <Button Grid.Row="0" Grid.Column="2" Style="{StaticResource fieldsButton}"
                 Content="{x:Static resx:Buttons.btnAddContactField}"
                 Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:ContactFields}}, Path=AddContactFieldCommand}"
                 CommandParameter="{Binding Path=Text, ElementName=txtFieldContent}"  />
@@ -34,12 +34,16 @@
                                                 Mode=TwoWay}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                       <TextBlock Text="{Binding Content}"/>
-                       <Button Content="{x:Static resx:Buttons.btnDeleteContactField}" HorizontalAlignment="Right"
-                              Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:ContactFields}}, Path=DeleteContactFieldCommand}"
-                              CommandParameter="{Binding}"  />
-                    </StackPanel>
+                    <Grid Style="{StaticResource ResourceKey=fieldsGrid}" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="{Binding Content}"/>
+                        <Button Grid.Column="1" Content="{x:Static resx:Buttons.btnDeleteContactField}" Style="{StaticResource fieldsButton}"
+                            Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:ContactFields}}, Path=DeleteContactFieldCommand}"
+                            CommandParameter="{Binding}"  />
+                    </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>

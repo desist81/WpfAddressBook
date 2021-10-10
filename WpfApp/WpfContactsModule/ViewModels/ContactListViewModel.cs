@@ -14,8 +14,8 @@ namespace WpfContactsModule.ViewModels
 {
     public class ContactListViewModel : BaseNotificationViewModel
     {
-        private IContactStateAppService _moduleState;
-        private IContactRepositoryAppService _repository;
+        private readonly IContactStateAppService _moduleState;
+        private readonly IContactRepositoryAppService _repository;
         private string _searchText;
 
         public ContactListViewModel(IContactModule module,

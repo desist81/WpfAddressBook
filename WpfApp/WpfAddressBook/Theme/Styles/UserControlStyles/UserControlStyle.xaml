@@ -31,4 +31,34 @@
         <Setter Property="Margin"
                 Value="5"/>
     </Style>
+
+    <Style TargetType="{x:Type Grid}" x:Key="fieldsGrid">
+        <Setter Property="FocusVisualStyle"
+                Value="{x:Null}"/>
+        <Setter Property="UseLayoutRounding"
+                Value="True"/>
+        <Setter Property="SnapsToDevicePixels"
+                Value="True"/>
+        <Setter Property="Margin"
+                Value="0"/>
+    </Style>
+
+    <Style TargetType="{x:Type Button}" x:Key="fieldsButton">
+        <Setter Property="FocusVisualStyle"
+                Value="{x:Null}"/>
+        <Setter Property="UseLayoutRounding"
+                Value="True"/>
+        <Setter Property="SnapsToDevicePixels"
+                Value="True"/>
+        <Setter Property="Height"
+                Value="25"/>
+        <Setter Property="Padding"
+                Value="0"/>
+        <Setter Property="Margin"
+                Value="0"/>
+        <Setter Property="FontSize"
+                Value="10"/>
+        <Setter Property="VerticalAlignment"
+                Value="Top"/>
+    </Style>
 </ResourceDictionary>

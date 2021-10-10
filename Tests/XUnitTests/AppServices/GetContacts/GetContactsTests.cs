@@ -13,8 +13,9 @@ namespace XUnitTests.AppServices.GetContacts
         [MemberData(nameof(GetContacts_0_Empty_Test_TestCaseParams))]
         public void GetContacts_0_Empty_Test(object data, object requiredCase, object expectedResult)
         {
-            var dataProvider = new ContactDataProviderMock();
-            IContactRepositoryAppService service = new ContactRepositoryAppService(dataProvider);
+            var contactDataProvider = new ContactDataProviderMock();
+            var fieldsDataProvider = new ContactFieldDataProviderMock();
+            IContactRepositoryAppService service = new ContactRepositoryAppService(contactDataProvider, fieldsDataProvider);
             var contacts =  service.GetContactsCollection(data.ToString());
             Assert.Equal(expectedResult, contacts.Count);
         }

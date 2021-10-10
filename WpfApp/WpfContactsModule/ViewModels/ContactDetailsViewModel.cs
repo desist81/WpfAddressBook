@@ -16,9 +16,9 @@ namespace WpfContactsModule.ViewModels
 {
     public class ContactDetailsViewModel : BaseNotificationViewModel
     {
-        IContactRepositoryAppService _repository;
-        ObservableCollection<ContactFieldBindingEntity> _emailsCollection;
-        ObservableCollection<ContactFieldBindingEntity> _phonesCollection;
+        private IContactRepositoryAppService _repository;
+        private ObservableCollection<ContactFieldBindingEntity> _emailsCollection;
+        private ObservableCollection<ContactFieldBindingEntity> _phonesCollection;
         public DelegateCommand<ContactFieldBindingEntity> DeleteContactFieldCommand { get; private set; }
         public DelegateCommand<ContactFieldBindingEntity> AddContactFieldCommand { get; private set; }
         public ContactDetailsViewModel(IContactModule module,
@@ -122,6 +122,7 @@ namespace WpfContactsModule.ViewModels
         private void OnAddContactFieldExecute(ContactFieldBindingEntity args)
         {
             args.DataState = DataState.Added;
+            args.Contact = this.EditContact;
             this.EditContact.Fields.Add(args);
             if (args.FieldType == DomainModel.FieldType.Email)
             {

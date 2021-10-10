@@ -11,7 +11,7 @@ namespace Substitutes.DataProviders
 {
     public class ContactDataProviderMock : DataProvider, IContactDataProvider
     {
-        DatabaseStorage _db;
+        private readonly DatabaseStorage _db;
         public ContactDataProviderMock()
         {
             _db = TestSession.Current.DatabaseStorage;

@@ -14,6 +14,6 @@ namespace DomainModel
         public string Content { get; set; }
 
         public FieldType FieldType { get; set; }
-
+        public Contact Contact { get; set; }
     }
 }

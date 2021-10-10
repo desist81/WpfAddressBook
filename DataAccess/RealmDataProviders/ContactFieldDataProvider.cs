@@ -1,28 +1,35 @@
-﻿//using DataProviderInterfates;
-//using DomainModel;
-//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
+﻿using DataProviderInterfates;
+using DomainModel;
+using RealmDataProviders.Entities;
+using RealmDataProviders.Translators;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-//namespace RealmDataProviders
-//{
-//    public class ContactFieldDataProvider : IContactFieldDataProvider
-//    {
-//        public void AddContatEmail(ContactEmail email)
-//        {
-//            throw new NotImplementedException();
-//        }
+namespace RealmDataProviders
+{
+    public class ContactFieldDataProvider : DataProvider, IContactFieldDataProvider
+    {
+        public void AddContactField(ContactField field)
+        {
+            RContactField rContact = Map.Mapper.Map<RContactField>(field);
+            RealmInstance.Write(() =>
+            {
+                RealmInstance.Add(rContact);
+            });
+        }
 
-//        public void DeleteContatEmail(Guid id)
-//        {
-//            throw new NotImplementedException();
-//        }
+        public void DeleteContactField(Guid id)
+        {
+            RContactField fieldToDelete = RealmInstance.Find<RContactField>(id);
 
-//        public void UpdateContatEmail(ContactEmail email)
-//        {
-//            throw new NotImplementedException();
-//        }
-//    }
-//}
+            RealmInstance.Write(() =>
+            {
+                RealmInstance.Remove(fieldToDelete);
+            });
+        }
+
+    }
+}
