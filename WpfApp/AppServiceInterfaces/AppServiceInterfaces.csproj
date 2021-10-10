@@ -47,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ClientModel\ClientModel.csproj">
-      <Project>{C105966C-BE5F-4C86-8240-7F557316025A}</Project>
+      <Project>{c105966c-be5f-4c86-8240-7f557316025a}</Project>
       <Name>ClientModel</Name>
     </ProjectReference>
   </ItemGroup>

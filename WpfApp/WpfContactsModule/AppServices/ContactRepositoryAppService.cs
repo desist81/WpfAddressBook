@@ -14,14 +14,15 @@ namespace WpfContactsModule.AppServices
 {
     public class ContactRepositoryAppService : IContactRepositoryAppService
     {
-        private IContactDataProvider _dataProvider;
-        public ContactRepositoryAppService(IContactDataProvider dataProvider)
-        {
-            _dataProvider = dataProvider;
+
+        private IContactDataProvider _contactDataProvider;
+        public ContactRepositoryAppService(IContactDataProvider contactDataProvider)
+        {           
+            _contactDataProvider = contactDataProvider;
         }
         public ObservableCollection<ContactBindingEntity> GetContactsCollection(string searchText)
         {
-            var contacts = _dataProvider.GetContacts(searchText);
+            var contacts = _contactDataProvider.GetContacts(searchText);
            
             var bindingContacts = contacts.Select(c => new ContactBindingEntity(c)).ToList();
             var observableContacts = new ObservableCollection<ContactBindingEntity>(bindingContacts);
@@ -32,7 +33,7 @@ namespace WpfContactsModule.AppServices
         {
             if (contact != null)
             {
-                _dataProvider.DeleteContat(contact.Id);
+                _contactDataProvider.DeleteContat(contact.Id);
             }
 
         }
@@ -41,11 +42,11 @@ namespace WpfContactsModule.AppServices
         {
             if (contact.DataState == DataState.Added)
             {
-                _dataProvider.AddContat(contact.DomainEntity);
+                _contactDataProvider.AddContat(contact.DomainEntity);
             }
             else if (contact.DataState == DataState.Modified)
             {
-                _dataProvider.UpdateContat(contact.DomainEntity);
+                _contactDataProvider.UpdateContat(contact.DomainEntity);
             }
         }
     }

@@ -41,6 +41,7 @@
       <HintPath>..\packages\Prism.Core.8.1.97\lib\net47\Prism.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -63,23 +64,23 @@
     <Compile Include="TestSession.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AppServiceInterfaces\AppServiceInterfaces.csproj">
-      <Project>{C4EAC603-D6BF-4369-9097-555C0D496FA0}</Project>
+    <ProjectReference Include="..\..\WpfApp\AppServiceInterfaces\AppServiceInterfaces.csproj">
+      <Project>{c4eac603-d6bf-4369-9097-555c0d496fa0}</Project>
       <Name>AppServiceInterfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ClientInfrastructure\ClientInfrastructure.csproj">
+    <ProjectReference Include="..\..\WpfApp\ClientInfrastructure\ClientInfrastructure.csproj">
       <Project>{931DD48F-4D29-4452-955C-D96623B5B7AF}</Project>
       <Name>ClientInfrastructure</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DataProviderInterfates\DataProviderInterfates.csproj">
+    <ProjectReference Include="..\..\Shared\DataProviderInterfates\DataProviderInterfates.csproj">
       <Project>{6966C992-F923-4645-9C94-CCA40FD2C528}</Project>
       <Name>DataProviderInterfates</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DomainModel\DomainModel.csproj">
+    <ProjectReference Include="..\..\Shared\DomainModel\DomainModel.csproj">
       <Project>{5B30157F-F987-4403-87C7-ED3DDDCB41EC}</Project>
       <Name>DomainModel</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WpfContactsModule\WpfContactsModule.csproj">
+    <ProjectReference Include="..\..\WpfApp\WpfContactsModule\WpfContactsModule.csproj">
       <Project>{7E16F344-3841-4CAD-A9E6-5A1E9D0FB461}</Project>
       <Name>WpfContactsModule</Name>
     </ProjectReference>
