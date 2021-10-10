@@ -7,6 +7,7 @@
              xmlns:local="clr-namespace:WpfContactsModule"
              xmlns:converters="clr-namespace:ClientInfrastructure.Converters;assembly=ClientInfrastructure"
              xmlns:localConst="clr-namespace:WpfContactsModule.Constants"
+             xmlns:resx="clr-namespace:WpfContactsModule.Resources"
              mc:Ignorable="d">
     <UserControl.Resources>
         <converters:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
@@ -18,8 +19,8 @@
         </Grid.RowDefinitions>
         <ToolBarPanel Grid.Row="0">
             <ToolBar>
-                <Button Content="Add" Command="{Binding AddCommand}"></Button>
-                <Button Content="Refresh" Command="{x:Static local:ModuleCommands.RefreshCommand}"></Button>
+                <Button Content="{x:Static resx:Buttons.btnAddContact}" Command="{Binding AddCommand}"></Button>
+                <Button Content="{x:Static resx:Buttons.btnRefreshContacts}" Command="{x:Static local:ModuleCommands.RefreshCommand}"></Button>
             </ToolBar>
         </ToolBarPanel>
         <ContentControl  Grid.Row="1" prism:RegionManager.RegionName="{x:Static localConst:ContactsRegionNames.ContactListRegion}"/>
@@ -41,8 +42,8 @@
                         </Grid.ColumnDefinitions>
                         <ContentControl Grid.Row="0" Grid.ColumnSpan="2"
                                         prism:RegionManager.RegionName="{x:Static localConst:ContactsRegionNames.ContactDetailsRegion}"/>
-                        <Button Grid.Row="1" Grid.Column="0" Content="Save" Command="{Binding SaveCommand}" IsEnabled="{Binding CanSave, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
-                        <Button Grid.Row="1" Grid.Column="1" Content="Close" Command="{Binding CloseCommand}" />
+                        <Button Grid.Row="1" Grid.Column="0" Content="{x:Static resx:Buttons.btnSaveContact}" Command="{Binding SaveCommand}" IsEnabled="{Binding CanSave, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Button Grid.Row="1" Grid.Column="1" Content="{x:Static resx:Buttons.btnCloseContact}" Command="{Binding CloseCommand}" />
                     </Grid>
                 </Border>
             </ContentControl>

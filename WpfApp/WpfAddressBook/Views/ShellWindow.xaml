@@ -6,7 +6,7 @@
         xmlns:prism="http://prismlibrary.com/"
         xmlns:const="clr-namespace:ClientInfrastructure.Constants;assembly=ClientInfrastructure"
         mc:Ignorable="d"
-        Title="ShellView" Height="450" Width="800">
+        Title="Address Book" Height="450" Width="800">
     <Grid>
         <ContentControl prism:RegionManager.RegionName="{x:Static const:RegionNames.MainWindowRegion}"
                         prism:RegionManager.RegionContext="{Binding RegionContext, Mode=TwoWay}" />

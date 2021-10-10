@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfContactsModule.Views"
+             xmlns:resx="clr-namespace:WpfContactsModule.Resources"
              mc:Ignorable="d">
     <Grid>
         <Grid.RowDefinitions>
@@ -18,7 +19,7 @@
             <ColumnDefinition Width="2*"></ColumnDefinition>
             <ColumnDefinition Width="8*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Row="0" Grid.Column="0" Text="Full name:" />
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Labels.lblFullName}" />
         <TextBox Grid.Row="0" Grid.Column="1">
             <Binding Path="RegionContext.EditItem.FullName" 
                      Mode="TwoWay" 
@@ -26,7 +27,7 @@
                      ValidatesOnDataErrors="True" 
                      NotifyOnValidationError="True" />
         </TextBox>
-        <TextBlock Grid.Row="1" Grid.Column="0" Text="Nickname:"/>
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Labels.lblNickname}"/>
         <TextBox Grid.Row="1" Grid.Column="1">
             <Binding Path="RegionContext.EditItem.Nickname" 
                      Mode="TwoWay" 
@@ -34,7 +35,7 @@
                      ValidatesOnDataErrors="True" 
                      NotifyOnValidationError="True" />
         </TextBox>
-        <TextBlock Grid.Row="2" Grid.Column="0" Text="Address:"/>
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Labels.lblAddress}"/>
         <TextBox Grid.Row="2" Grid.Column="1">
             <Binding Path="RegionContext.EditItem.Address" 
                      Mode="TwoWay" 
@@ -42,7 +43,7 @@
                      ValidatesOnDataErrors="True" 
                      NotifyOnValidationError="True" />
         </TextBox>
-        <TextBlock Grid.Row="3" Grid.Column="0" Text="Company:"></TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Labels.lblCompany}"></TextBlock>
         <TextBox Grid.Row="3" Grid.Column="1">
             <Binding Path="RegionContext.EditItem.Company" 
                      Mode="TwoWay" 

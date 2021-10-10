@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfContactsModule"
+             xmlns:resx="clr-namespace:WpfContactsModule.Resources"
              xmlns:prism="http://prismlibrary.com/"
              mc:Ignorable="d">
     <Grid>
@@ -12,7 +13,7 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
-            <TextBlock Text="Search:"></TextBlock>
+            <TextBlock Text="{x:Static resx:Labels.lblSearchContacts}"></TextBlock>
             <TextBox Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
         </StackPanel>
         <ListView Grid.Row="1"
@@ -21,19 +22,19 @@
             SelectedIndex="{Binding RegionContext.CurrentIndex, Mode=TwoWay}">
             <ListView.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="Edit" Command="{x:Static local:ModuleCommands.EditCommand}"/>
+                    <MenuItem Header="{x:Static resx:Buttons.btnEditContact}" Command="{x:Static local:ModuleCommands.EditCommand}"/>
                     <Separator></Separator>
-                    <MenuItem Header="Delete" Command="{Binding DeleteCommand}"/>
+                    <MenuItem Header="{x:Static resx:Buttons.btnDeleteContact}" Command="{Binding DeleteCommand}"/>
                 </ContextMenu>
             </ListView.ContextMenu>
             <ListView.View>
 
-                <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="Contacts Book">
+                <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="{x:Static resx:Headers.ContactListHeader}">
 
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=FullName}" Header="Full name"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=Nickname}" Header="Nickname"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=Address}" Header="Address"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=Company}" Header="Company"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=FullName}" Header="{x:Static resx:Headers.clmnhFullName}"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Nickname}" Header="{x:Static resx:Headers.clmnhNickname}"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Address}" Header="{x:Static resx:Headers.clmnhAddress}"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Company}" Header="{x:Static resx:Headers.clmnhCompany}"/>
                 </GridView>
 
             </ListView.View>
