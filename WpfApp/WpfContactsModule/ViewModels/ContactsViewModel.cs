@@ -100,7 +100,12 @@ namespace WpfContactsModule.ViewModels
         private void OnEditExecute()
         {
             InInEditMode = true;
-            Contact contactToEdit = (CurrentContext.CurrentItem as ContactBindingEntity).DomainEntity.CreateDeepCopy<Contact>();
+            var currentItem = (CurrentContext.CurrentItem as ContactBindingEntity);
+            Contact contactToEdit = currentItem.DomainEntity.CreateDeepCopy<Contact>();
+            foreach (ContactField field in currentItem.DomainEntity.Fields)
+            {
+                contactToEdit.Fields.Add(field.CreateDeepCopy<ContactField>());
+            }
             CurrentContext.EditItem = new ContactBindingEntity(contactToEdit);
             AttachListeners();
             RaisePropertyChanged(nameof(CanSave));

@@ -48,13 +48,13 @@ namespace WpfContactsModule.AppServices
             foreach (var addedField in addedFields)
             {
                 // _contactFieldDataProvider.AddContactField(addedField.DomainEntity);
-                contact.Fields.Add(addedField);
+                contact.DomainEntity.Fields.Add(addedField.DomainEntity);
             }
             var deletedFields = contact.Fields.Where(f => f.DataState == DataState.Deleted).ToList();
             foreach (var deletedField in deletedFields)
             {
                 // _contactFieldDataProvider.DeleteContactField(deletedField.Id);
-                contact.Fields.Remove(deletedField);
+                contact.DomainEntity.Fields.Remove(deletedField.DomainEntity);
             }
 
             if (contact.DataState == DataState.Added)
