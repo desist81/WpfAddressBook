@@ -73,9 +73,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppServices\AddContact\AddContact.data.cs" />
+    <Compile Include="AppServices\AddContact\AddContact.testcases.cs" />
+    <Compile Include="AppServices\AddContact\AddContactTests.cs" />
     <Compile Include="AppServices\GetContacts\GetContactsTests.cs" />
     <Compile Include="AppServices\GetContacts\GetContacts.data.cs" />
-    <Compile Include="AppServices\GetContacts\GetContacts.private.cs" />
     <Compile Include="AppServices\GetContacts\GetContacts.testcases.cs" />
     <Compile Include="BaseServiceTests.cs" />
     <Compile Include="BaseTestCase.cs" />
