@@ -43,6 +43,20 @@ namespace WpfContactsModule.AppServices
 
         public void SaveContact(ContactBindingEntity contact)
         {
+            
+            var addedFields = contact.Fields.Where(f => f.DataState == DataState.Added).ToList();
+            foreach (var addedField in addedFields)
+            {
+                // _contactFieldDataProvider.AddContactField(addedField.DomainEntity);
+                contact.Fields.Add(addedField);
+            }
+            var deletedFields = contact.Fields.Where(f => f.DataState == DataState.Deleted).ToList();
+            foreach (var deletedField in deletedFields)
+            {
+                // _contactFieldDataProvider.DeleteContactField(deletedField.Id);
+                contact.Fields.Remove(deletedField);
+            }
+
             if (contact.DataState == DataState.Added)
             {
                 _contactDataProvider.AddContat(contact.DomainEntity);
@@ -50,16 +64,6 @@ namespace WpfContactsModule.AppServices
             else if (contact.DataState == DataState.Modified)
             {
                 _contactDataProvider.UpdateContat(contact.DomainEntity);
-            }
-            var addedFields = contact.Fields.Where(f => f.DataState == DataState.Added).ToList();
-            foreach (var addedField in addedFields)
-            {
-                _contactFieldDataProvider.AddContactField(addedField.DomainEntity);
-            }
-            var deletedFields = contact.Fields.Where(f => f.DataState == DataState.Deleted).ToList();
-            foreach (var deletedField in deletedFields)
-            {
-                _contactFieldDataProvider.DeleteContactField(deletedField.Id);
             }
         }
     }

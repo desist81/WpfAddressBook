@@ -14,10 +14,10 @@ namespace RealmDataProviders
     {
         public void AddContactField(ContactField field)
         {
-            RContactField rContact = Map.Mapper.Map<RContactField>(field);
+            RContactField rContactField = Map.Mapper.Map<RContactField>(field);
             RealmInstance.Write(() =>
             {
-                RealmInstance.Add(rContact);
+                RealmInstance.Add(rContactField);
             });
         }
 

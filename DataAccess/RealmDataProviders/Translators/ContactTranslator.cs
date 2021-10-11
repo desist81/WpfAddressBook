@@ -25,11 +25,12 @@ namespace RealmDataProviders.Translators
                             var configuration = new MapperConfiguration(cfg =>
                         {
                             cfg.CreateMap<DomainModel.Contact, RContact>()
-                            .ForMember(source => source.Fields, option => option.Ignore());
+                            .ForMember(source => source.Fields, option => option.MapFrom(d=>d.Fields));
 
                             cfg.CreateMap<DomainModel.ContactField, RContactField>();
 
-                            cfg.CreateMap<RContact, DomainModel.Contact>();
+                            cfg.CreateMap<RContact, DomainModel.Contact>()
+                            .ForMember(source => source.Fields, option => option.MapFrom(d=>d.Fields));
                             cfg.CreateMap<RContactField, DomainModel.ContactField>();
                         });
                             // configuration.AssertConfigurationIsValid();

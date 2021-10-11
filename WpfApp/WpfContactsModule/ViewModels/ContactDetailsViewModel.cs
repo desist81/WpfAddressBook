@@ -122,7 +122,7 @@ namespace WpfContactsModule.ViewModels
         private void OnAddContactFieldExecute(ContactFieldBindingEntity args)
         {
             args.DataState = DataState.Added;
-            args.Contact = this.EditContact;
+            //args.Contact = this.EditContact;
             this.EditContact.Fields.Add(args);
             if (args.FieldType == DomainModel.FieldType.Email)
             {
