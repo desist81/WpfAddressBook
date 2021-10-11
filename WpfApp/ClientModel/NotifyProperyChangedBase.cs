@@ -28,6 +28,9 @@ namespace ClientModel
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
         internal virtual void OnPropertyChangedNotification(bool isPropertyValueChanged)
         { }
+
+        internal virtual void BeforePropertyChangedNotification(bool isPropertyValueChanged)
+        { }
         protected bool CheckPropertyChanged<T>(T oldValue, T newValue)
         {
             if (oldValue == null && newValue == null)
@@ -46,6 +49,7 @@ namespace ClientModel
         protected virtual void FirePropertyChanged(string propertyName, bool isPropertyValueChanged = true)
         {
             Validate();
+            BeforePropertyChangedNotification(isPropertyValueChanged);
             RaisePropertyChanged(propertyName);
             OnPropertyChangedNotification(isPropertyValueChanged);
         }

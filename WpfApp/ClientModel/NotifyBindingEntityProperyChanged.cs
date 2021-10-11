@@ -34,9 +34,14 @@ namespace ClientModel
             }
         }
 
-        internal override void OnPropertyChangedNotification(bool isPropertyValueChanged)
+        internal override void BeforePropertyChangedNotification(bool isPropertyValueChanged)
         {
             if (this.DataState == DataState.Undefined) this.DataState = DataState.Modified;
+            base.OnPropertyChangedNotification(isPropertyValueChanged);
+        }
+
+        internal override void OnPropertyChangedNotification(bool isPropertyValueChanged)
+        {
             base.OnPropertyChangedNotification(isPropertyValueChanged);
         }
     }

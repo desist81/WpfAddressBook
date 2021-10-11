@@ -97,7 +97,7 @@ namespace WpfContactsModule.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Delete.
+        ///   Looks up a localized string similar to X.
         /// </summary>
         public static string btnDeleteContactField {
             get {

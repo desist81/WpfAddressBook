@@ -13,5 +13,6 @@ namespace WpfContactsModule
     {
         int CurrentIndex { get; set; }
         NotifyProperyChangedBase EditItem { get; set; }
+
     }
 }

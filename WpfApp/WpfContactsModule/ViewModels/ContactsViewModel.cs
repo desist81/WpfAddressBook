@@ -135,7 +135,8 @@ namespace WpfContactsModule.ViewModels
         }
 
         public bool CanSave => CurrentContext.EditItem != null && !CurrentContext.EditItem.HasErrors
-                && (CurrentContext.EditItem as ContactBindingEntity).DataState != DataState.Undefined;
+                &&((CurrentContext.EditItem as ContactBindingEntity).DataState != DataState.Undefined
+                    || (CurrentContext.EditItem as ContactBindingEntity).Fields.Any(f=>f.DataState != DataState.Undefined));
 
         #endregion Save
 

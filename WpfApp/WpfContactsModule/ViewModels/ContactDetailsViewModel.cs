@@ -109,13 +109,12 @@ namespace WpfContactsModule.ViewModels
             if (args.FieldType == DomainModel.FieldType.Email)
             {
                 ContactEmailsCollection.Remove(args);
-                RaisePropertyChanged(nameof(ContactEmailsCollection));
             }
             else if (args.FieldType == DomainModel.FieldType.Phone)
             {
                 ContactPhonesCollection.Remove(args);
-                RaisePropertyChanged(nameof(ContactPhonesCollection));
             }
+            this.EditContact.NotifyContactFieldsChanged();
         }
 
 
@@ -127,13 +126,12 @@ namespace WpfContactsModule.ViewModels
             if (args.FieldType == DomainModel.FieldType.Email)
             {
                 ContactEmailsCollection.Add(args);
-                RaisePropertyChanged(nameof(ContactEmailsCollection));
             }
             else if (args.FieldType == DomainModel.FieldType.Phone)
             {
                 ContactPhonesCollection.Add(args);
-                RaisePropertyChanged(nameof(ContactPhonesCollection));
             }
+            this.EditContact.NotifyContactFieldsChanged();
         }
 
     }

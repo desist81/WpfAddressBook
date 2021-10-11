@@ -130,7 +130,7 @@
     <value>Delete</value>
   </data>
   <data name="btnDeleteContactField" xml:space="preserve">
-    <value>Delete</value>
+    <value>X</value>
   </data>
   <data name="btnEditContact" xml:space="preserve">
     <value>Edit</value>

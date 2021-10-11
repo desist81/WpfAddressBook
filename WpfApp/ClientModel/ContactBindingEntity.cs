@@ -118,6 +118,10 @@ namespace ClientModel
             }
         }
 
+        public void NotifyContactFieldsChanged()
+        {
+            FirePropertyChanged(nameof(Fields), true);
+        }
         public override bool Validate()
         {
             if (String.IsNullOrWhiteSpace(this.FullName))

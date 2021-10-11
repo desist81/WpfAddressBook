@@ -28,8 +28,8 @@
                 Value="Black"/>
         <Setter Property="BorderThickness"
                 Value="1"/>
-        <Setter Property="Margin"
-                Value="5"/>
+        <Setter Property="Padding"
+                Value="20"/>
     </Style>
 
     <Style TargetType="{x:Type Grid}" x:Key="fieldsGrid">
@@ -43,6 +43,23 @@
                 Value="0"/>
     </Style>
 
+    <Style TargetType="{x:Type TextBox}" x:Key="fieldsTextBox">
+        <Setter Property="FocusVisualStyle"
+                Value="{x:Null}"/>
+        <Setter Property="UseLayoutRounding"
+                Value="True"/>
+        <Setter Property="SnapsToDevicePixels"
+                Value="True"/>
+        <Setter Property="Width"
+                Value="150"/>
+        <Setter Property="Padding"
+                Value="0"/>
+        <Setter Property="Margin"
+                Value="0"/>
+        <Setter Property="HorizontalAlignment"
+                Value="Right"/>
+    </Style>
+    
     <Style TargetType="{x:Type Button}" x:Key="fieldsButton">
         <Setter Property="FocusVisualStyle"
                 Value="{x:Null}"/>
@@ -52,6 +69,8 @@
                 Value="True"/>
         <Setter Property="Height"
                 Value="25"/>
+        <Setter Property="Width"
+                Value="30"/>
         <Setter Property="Padding"
                 Value="0"/>
         <Setter Property="Margin"
@@ -60,5 +79,64 @@
                 Value="10"/>
         <Setter Property="VerticalAlignment"
                 Value="Top"/>
+    </Style>
+    <Style TargetType="{x:Type ListBox}" x:Key="lstFields">
+        <Setter Property="FocusVisualStyle"
+                Value="{x:Null}"/>
+        <Setter Property="UseLayoutRounding"
+                Value="True"/>
+        <Setter Property="SnapsToDevicePixels"
+                Value="True"/>
+        <Setter Property="Background"
+                Value="Transparent"/>
+        <Setter Property="BorderBrush"
+                Value="Transparent"/>
+        <Setter Property="Margin"
+                Value="0,0,0,0"/>
+        <Setter Property="Height"
+                Value="100"/>
+       </Style>
+   
+    <Style TargetType="{x:Type Button}" x:Key="fieldsDelButton">
+        <Setter Property="FocusVisualStyle"
+                Value="{x:Null}"/>
+        <Setter Property="UseLayoutRounding"
+                Value="True"/>
+        <Setter Property="SnapsToDevicePixels"
+                Value="True"/>
+        <Setter Property="Height"
+                Value="25"/>
+        <Setter Property="Width"
+                Value="25"/>
+        <Setter Property="Padding"
+                Value="0,0,0,0"/>
+        <Setter Property="Margin"
+                Value="0,0,5,0"/>
+        <Setter Property="FontSize"
+                Value="10"/>
+        <Setter Property="VerticalAlignment"
+                Value="Top"/>
+    </Style>
+    
+    <Style TargetType="{x:Type TextBlock}" x:Key="fieldsText">
+        <Setter Property="FocusVisualStyle"
+                Value="{x:Null}"/>
+        <Setter Property="UseLayoutRounding"
+                Value="True"/>
+        <Setter Property="SnapsToDevicePixels"
+                Value="True"/>
+        <Setter Property="Height"
+                Value="15"/>
+        <Setter Property="Width"
+                Value="130"/>
+        <Setter Property="Padding"
+                Value="0"/>
+        <Setter Property="Margin"
+                Value="0"/>
+        <Setter Property="FontSize"
+                Value="10"/>
+        <Setter Property="TextAlignment"
+                Value="Right"/>        
+
     </Style>
 </ResourceDictionary>

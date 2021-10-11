@@ -12,8 +12,8 @@ namespace WpfContactsModule
 {
     public class ContactViewSharedContext : ViewSharedContext, IContactViewSharedContext
     {
-        NotifyProperyChangedBase _editItem;
-        int _currentIndex;
+        private NotifyProperyChangedBase _editItem;
+        private int _currentIndex;
 
         public ContactViewSharedContext(string moduleName) : base(moduleName)
         {
@@ -52,5 +52,7 @@ namespace WpfContactsModule
                 }
             }
         }
+
+      
     }
 }

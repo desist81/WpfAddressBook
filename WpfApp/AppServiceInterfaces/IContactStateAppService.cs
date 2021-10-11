@@ -8,6 +8,6 @@ namespace AppServiceInterfaces
 {
     public interface IContactStateAppService
     {
-        bool IsEditMode { get; set; }
+        bool IsEditMode { get; set; }   
     }
 }
